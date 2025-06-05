@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       '@hookform/resolvers':
-        specifier: ^3.10.0
+        specifier: ^3.9.1
         version: 3.10.0(react-hook-form@7.57.0(react@18.3.1))
       '@radix-ui/react-accordion':
         specifier: 1.2.2
@@ -93,7 +93,7 @@ importers:
         specifier: 1.1.6
         version: 1.1.6(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       autoprefixer:
-        specifier: ^10.4.21
+        specifier: ^10.4.20
         version: 10.4.21(postcss@8.5.4)
       class-variance-authority:
         specifier: ^0.7.1
@@ -132,47 +132,47 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: ^7.57.0
+        specifier: ^7.54.1
         version: 7.57.0(react@18.3.1)
       react-resizable-panels:
-        specifier: ^2.1.9
+        specifier: ^2.1.7
         version: 2.1.9(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       recharts:
         specifier: latest
         version: 2.15.3(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       sonner:
-        specifier: ^1.7.4
+        specifier: ^1.7.1
         version: 1.7.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       tailwind-merge:
-        specifier: ^2.6.0
+        specifier: ^2.5.5
         version: 2.6.0
       tailwindcss-animate:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.4.17)
       vaul:
-        specifier: ^0.9.9
+        specifier: ^0.9.6
         version: 0.9.9(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       zod:
-        specifier: ^3.25.51
+        specifier: ^3.24.1
         version: 3.25.51
     devDependencies:
       '@types/node':
-        specifier: ^22.15.29
+        specifier: ^22
         version: 22.15.29
       '@types/react':
-        specifier: ^19.1.6
+        specifier: ^19
         version: 19.1.6
       '@types/react-dom':
-        specifier: ^19.1.6
+        specifier: ^19
         version: 19.1.6(@types/react@19.1.6)
       postcss:
-        specifier: ^8.5.4
+        specifier: ^8
         version: 8.5.4
       tailwindcss:
         specifier: ^3.4.17
         version: 3.4.17
       typescript:
-        specifier: ^5.8.3
+        specifier: ^5
         version: 5.8.3
 
 packages:
