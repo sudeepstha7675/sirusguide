@@ -45,7 +45,7 @@ export function AppSidebar() {
                       !isParentActive &&
                       "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
                   )}
-                  variant={"ghost"}
+                  variant="outline"
                   tooltip={item.title}
                   disabled={item.href === "#"} // Disable trigger if parent href is "#"
                 >
@@ -72,9 +72,10 @@ export function AppSidebar() {
                               isSubActive &&
                                 "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
                               "w-full justify-start",
+                              subItem.href === "#" && "pointer-events-none opacity-50"
                             )}
-                            tooltip={subItem.title}
-                            disabled={subItem.href === "#"}
+                            title={subItem.title}
+                            aria-disabled={subItem.href === "#"}
                           >
                             <subItem.icon className="mr-2 h-4 w-4 flex-shrink-0" />
                             <span className={cn("truncate", { "sr-only": state === "collapsed" && !isMobile })}>
@@ -103,7 +104,7 @@ export function AppSidebar() {
                   "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
                 "w-full justify-start",
               )}
-              variant={isActive ? "default" : "ghost"}
+              variant={isActive ? "default" : "outline"}
               tooltip={item.title}
               disabled={item.href === "#"}
             >
