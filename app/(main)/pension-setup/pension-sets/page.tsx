@@ -48,7 +48,7 @@ export default function PensionSetsPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Pension Setup</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Configure pension plans and sets for your organization.
+              Configure pension plans and sets for your organisation.
             </p>
           </div>
         </div>
@@ -57,7 +57,7 @@ export default function PensionSetsPage() {
         <Alert className="mb-6 bg-primary/5 border-primary/20">
           <Info className="h-5 w-5 text-primary" />
           <AlertDescription className="ml-2 text-base">
-            Pension setup in Sirius 365 can be used for configuring various pension plans, pension sets, pension rates,
+            Pension setup in Sirius Payroll 365 can be used for configuring various pension plans, pension sets, pension rates,
             and so on, which helps in making pension contributions a hassle-free process.
           </AlertDescription>
         </Alert>
@@ -88,7 +88,7 @@ export default function PensionSetsPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on <span className="font-bold text-primary">Pension</span> drop-down menu.
+                  Click <span className="font-bold text-primary">Pension</span> drop-down menu.
                 </p>
               </div>
 

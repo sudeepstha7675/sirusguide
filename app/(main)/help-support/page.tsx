@@ -22,9 +22,9 @@ export default function FAQPage() {
             "Go to Employees > Employees and click 'Add New Employee'. Fill in the general details, payroll information, HMRC details, and bank account information. Make sure to configure their pay elements and work sites if applicable. For bulk employee imports, use the Data Import functionality under the Tools menu.",
         },
         {
-          question: "What are the system requirements for SiriusPayroll365?",
+          question: "What are the system requirements for Sirius Payroll 365?",
           answer:
-            "SiriusPayroll365 requires Dynamics 365 Business Central (Essential or Premium license). It works with all modern browsers including Chrome, Firefox, Edge, and Safari. For optimal performance, we recommend a stable internet connection with at least 10Mbps download speed and 5Mbps upload speed.",
+            "Sirius Payroll 365 requires Dynamics 365 Business Central (Essential or Premium license). It works with all modern browsers including Chrome, Firefox, Edge, and Safari. For optimal performance, we recommend a stable internet connection with at least 10Mbps download speed and 5Mbps upload speed.",
         },
       ],
     },
@@ -57,14 +57,14 @@ export default function FAQPage() {
             "Flexible rate timesheets allow dynamic pay rates that can change with each upload via Excel import. Fixed rate timesheets use constant rates defined at the company level and employee work sites. Choose flexible rates when employees have varying pay rates based on job type or location. Use fixed rates when employees have consistent pay rates across all work.",
         },
         {
-          question: "How do I set up pension auto-enrollment?",
+          question: "How do I set up pension auto-enrolment?",
           answer:
-            "Go to Setup > Pension > Pension Enrollment Setup. Configure age criteria, qualifying earnings thresholds, auto-enrollment terms, and re-assessment durations according to HMRC guidelines. You'll need to set up pension providers, contribution rates, and assessment rules. The system will automatically assess employees during payroll processing and flag those eligible for enrollment.",
+            "Go to Setup > Pension > Pension Enrolment Setup. Configure age criteria, qualifying earnings thresholds, auto-enrolment terms, and re-assessment durations according to HMRC guidelines. You'll need to set up pension providers, contribution rates, and assessment rules. The system will automatically assess employees during payroll processing and flag those eligible for enrolment.",
         },
         {
           question: "What are the different student loan plan types?",
           answer:
-            "SiriusPayroll365 supports four student loan plans: PGL (Postgraduate Loan), SLP1 (Plan 1), SLP2 (Plan 2), and SLP4 (Plan 4). Each has different thresholds and repayment rates as per HMRC guidelines. The system automatically calculates deductions based on the plan type and employee earnings. You can find current thresholds in the HMRC Configuration section.",
+            "Sirius Payroll 365 supports four student loan plans: PGL (Postgraduate Loan), SLP1 (Plan 1), SLP2 (Plan 2), and SLP4 (Plan 4). Each has different thresholds and repayment rates as per HMRC guidelines. The system automatically calculates deductions based on the plan type and employee earnings. You can find current thresholds in the HMRC Configuration section.",
         },
       ],
     },
@@ -84,7 +84,7 @@ export default function FAQPage() {
         {
           question: "How do I ensure GDPR compliance with employee data?",
           answer:
-            "SiriusPayroll365 includes built-in GDPR compliance features: data encryption, access controls, audit trails, and data retention policies. Use the Security Roles feature to limit access to sensitive information. The Data Subject Access Request tool helps you respond to employee requests for their personal data. Regular system updates ensure ongoing compliance with changing regulations.",
+            "Sirius Payroll 365 includes built-in GDPR compliance features: data encryption, access controls, audit trails, and data retention policies. Use the Security Roles feature to limit access to sensitive information. The Data Subject Access Request tool helps you respond to employee requests for their personal data. Regular system updates ensure ongoing compliance with changing regulations.",
         },
       ],
     },
@@ -104,7 +104,7 @@ export default function FAQPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Frequently Asked Questions</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Find answers to common questions about SiriusPayroll365
+              Find answers to common questions about Sirius Payroll 365
             </p>
           </div>
         </div>
@@ -114,7 +114,7 @@ export default function FAQPage() {
           <HelpCircle className="h-5 w-5 text-primary" />
           <AlertDescription className="ml-2 text-base">
             Browse through our comprehensive FAQ section to find answers to the most common questions about
-            SiriusPayroll365. If you can't find what you're looking for, please contact our support team.
+            Sirius Payroll 365. If you can't find what you're looking for, please contact our support team.
           </AlertDescription>
         </Alert>
 

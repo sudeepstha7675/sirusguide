@@ -132,7 +132,7 @@ export default function FlexibleRateSetupPage() {
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Import Timesheet Data</p>
                   <p className="text-sm text-muted-foreground">
-                    Click on "Import Timesheet" to upload your Excel file with the timesheet data
+                    Click "Import Timesheet" to upload your Excel file with the timesheet data
                   </p>
                   <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
                     <img
@@ -154,7 +154,7 @@ export default function FlexibleRateSetupPage() {
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Validate Data</p>
                   <p className="text-sm text-muted-foreground">
-                    Click on "Check Data" to validate the imported timesheet information
+                    Click "Check Data" to validate the imported timesheet information
                   </p>
                 </div>
               </div>
@@ -166,7 +166,7 @@ export default function FlexibleRateSetupPage() {
                 <div className="space-y-2">
                   <p className="text-sm font-medium">Create Timesheets</p>
                   <p className="text-sm text-muted-foreground">
-                    Click on "Create Time Sheets" to generate the timesheets in payroll
+                    Click "Create Time Sheets" to generate the timesheets in payroll
                   </p>
                   <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
                     <img

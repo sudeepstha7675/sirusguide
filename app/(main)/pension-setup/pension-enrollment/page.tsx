@@ -5,7 +5,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { UserCircle, Info } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
-export default function PensionEnrollmentPage() {
+export default function PensionenrolmentPage() {
   const configurationCriteria = [
     { name: "Age Criteria", value: "22 to State Pension Age", category: "Configuration" },
     {
@@ -16,8 +16,8 @@ export default function PensionEnrollmentPage() {
   ]
 
   const postponementCriteria = [
-    { name: "Initial Auto Enrollment Term", value: "1 month", category: "Postponement" },
-    { name: "Auto Enrollment Duration", value: "3 months", category: "Postponement" },
+    { name: "Initial Auto enrolment Term", value: "1 month", category: "Postponement" },
+    { name: "Auto enrolment Duration", value: "3 months", category: "Postponement" },
   ]
 
   const reassessmentCriteria = [{ name: "Re-Assessment Duration", value: "3 years", category: "Reassessment" }]
@@ -47,9 +47,9 @@ export default function PensionEnrollmentPage() {
             </div>
           </div>
           <div>
-            <h1 className="text-3xl font-black text-primary">Pension Enrollment Setup</h1>
+            <h1 className="text-3xl font-black text-primary">Pension Enrolment Setup</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Setup and configure automatic pension enrollment according to HMRC guidelines.
+              Setup and configure automatic pension enrolment according to HMRC guidelines.
             </p>
           </div>
         </div>
@@ -58,7 +58,7 @@ export default function PensionEnrollmentPage() {
         <Alert className="mb-6 bg-primary/5 border-primary/20">
           <Info className="h-5 w-5 text-primary" />
           <AlertDescription className="ml-2 text-base">
-            Configure employee pension enrollment settings in compliance with HMRC guidelines. This setup ensures proper
+            Configure employee pension enrolment settings in compliance with HMRC guidelines. This setup ensures proper
             pension contributions for eligible employees who have not yet enrolled in a pension scheme.
           </AlertDescription>
         </Alert>
@@ -89,7 +89,7 @@ export default function PensionEnrollmentPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on <span className="font-bold text-primary">Pension</span> drop-down menu.
+                  Click <span className="font-bold text-primary">Pension</span> drop-down menu.
                 </p>
               </div>
 
@@ -98,15 +98,15 @@ export default function PensionEnrollmentPage() {
                   3
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Select <span className="font-bold text-primary">Pension Enrollment Setup</span>.
+                  Select <span className="font-bold text-primary">Pension Enrolment Setup</span>.
                 </p>
               </div>
             </div>
 
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               <img
-                src="/PensionEnrollmentSetup1.png"
-                alt="Step by Step guide to Pension Enrollment Setup"
+                src="/PensionenrolmentSetup1.png"
+                alt="Step by Step guide to Pension enrolment Setup"
                 className="w-full object-contain"
               />
             </div>
@@ -134,13 +134,13 @@ export default function PensionEnrollmentPage() {
             <div className="flex items-start gap-3">
               <span className="mt-1 text-primary">→</span>
               <p className="text-muted-foreground">
-                Manages <span className="font-semibold text-primary">Automatic Enrollment</span> for qualifying
+                Manages <span className="font-semibold text-primary">Automatic Enrolment</span> for qualifying
                 employees
               </p>
             </div>
             <div className="flex items-start gap-3">
               <span className="mt-1 text-primary">→</span>
-              <p className="text-muted-foreground">Provides customizable enrollment criteria configuration</p>
+              <p className="text-muted-foreground">Provides customisable enrolment criteria configuration</p>
             </div>
             <div className="flex items-start gap-3">
               <span className="mt-1 text-primary">→</span>
@@ -152,16 +152,16 @@ export default function PensionEnrollmentPage() {
           </CardContent>
         </Card>
 
-        {/* Enrollment Configuration Card */}
+        {/* enrolment Configuration Card */}
         <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
                 <UserCircle className="h-5 w-5 text-primary" />
               </div>
-              Enrollment Configuration
+              Enrolment Configuration
             </CardTitle>
-            <p className="text-muted-foreground mt-2">Define core enrollment parameters according to HMRC guidelines</p>
+            <p className="text-muted-foreground mt-2">Define core enrolment parameters according to HMRC guidelines</p>
           </CardHeader>
           <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -196,7 +196,7 @@ export default function PensionEnrollmentPage() {
               Postponement and Re-assessment
             </CardTitle>
             <p className="text-muted-foreground mt-2">
-              Configure duration settings for enrollment postponement and regular re-assessment periods
+              Configure duration settings for enrolment postponement and regular re-assessment periods
             </p>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
@@ -239,8 +239,8 @@ export default function PensionEnrollmentPage() {
 
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               <img
-                src="/PensionEnrollmentSetup2.png"
-                alt="Available Pension Enrollment Criteria"
+                src="/PensionenrolmentSetup2.png"
+                alt="Available Pension enrolment Criteria"
                 className="w-full object-contain"
               />
             </div>

@@ -27,8 +27,8 @@ export default function GeneralPayrollSetupPage() {
         <Alert className="mb-6 bg-primary/5 border-primary/20">
           <Info className="h-5 w-5 text-primary" />
           <AlertDescription className="ml-2 text-base">
-            This section allows you to define fundamental payroll parameters for your organization. As per the
-            SiriusPayroll365 setup guide, this involves configuring various options tailored to your company's needs.
+            This section allows you to define fundamental payroll parameters for your organisation. As per the
+            Sirius Payroll 365 setup guide, this involves configuring various options tailored to your company's needs.
           </AlertDescription>
         </Alert>
 
@@ -44,28 +44,33 @@ export default function GeneralPayrollSetupPage() {
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                  1
-                </div>
-                <p className="text-muted-foreground pt-1">
-                  Search for <span className="font-semibold text-primary">"Payroll Setup"</span> in the BC search icon,
-                  or
-                </p>
-              </div>
+  <div className="flex items-start gap-3">
+    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+      1
+    </div>
+    <p className="text-muted-foreground pt-1">
+      Search for <span className="font-semibold text-primary">"Payroll Setup"</span> in the BC search icon
+    </p>
+  </div>
 
-              <div className="flex items-start gap-3">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
-                  2
-                </div>
-                <p className="text-muted-foreground pt-1">
-                  Navigate to{" "}
-                  <span className="font-semibold text-primary">
-                    Setup → Payroll Setups drop-down menu → Select Payroll Setup
-                  </span>
-                </p>
-              </div>
-            </div>
+  <div className="flex justify-start pl-10">
+    <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+      <span className="text-primary font text-medium">OR</span>
+    </div>
+  </div>
+
+  <div className="flex items-start gap-3">
+    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+      2
+    </div>
+    <p className="text-muted-foreground pt-1">
+      Navigate to{" "}
+      <span className="font-semibold text-primary">
+        Setup → Payroll Setups drop-down menu → Select Payroll Setup
+      </span>
+    </p>
+  </div>
+</div>
 
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               <img

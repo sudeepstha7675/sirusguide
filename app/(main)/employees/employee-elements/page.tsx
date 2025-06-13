@@ -20,7 +20,7 @@ export default function EmployeeElementsPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Employee Elements Guide</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Learn how to configure and manage employee payroll elements in Sirius 365.
+              Learn how to configure and manage employee payroll elements in Sirius Payroll 365.
             </p>
           </div>
         </div>
@@ -51,10 +51,16 @@ export default function EmployeeElementsPage() {
                   1
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Search for <span className="font-bold text-primary">"Employee Elements"</span> in the BC search icon,
-                  or
+                  Search for <span className="font-bold text-primary">"Employee Elements"</span> in the BC search icon
                 </p>
               </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
+              </div>
+
 
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
@@ -85,7 +91,7 @@ export default function EmployeeElementsPage() {
               </div>
               Available Payroll Elements
             </CardTitle>
-            <p className="text-muted-foreground mt-2">Overview of the payroll elements available in Sirius 365</p>
+            <p className="text-muted-foreground mt-2">Overview of the payroll elements available in Sirius Payroll 365</p>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

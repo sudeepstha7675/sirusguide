@@ -37,7 +37,7 @@ export default function GeneralHmrcSetupPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">HMRC Setup Guide</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Configure HMRC integration and RTI submissions in Sirius 365.
+              Configure HMRC integration and RTI submissions in Sirius Payroll 365.
             </p>
           </div>
         </div>
@@ -70,6 +70,12 @@ export default function GeneralHmrcSetupPage() {
                 <p className="text-muted-foreground pt-1">
                   Search for <span className="font-bold text-primary">"HMRC Setup"</span> in the BC search icon, or
                 </p>
+              </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
               </div>
 
               <div className="flex items-start gap-3">
@@ -194,7 +200,7 @@ export default function GeneralHmrcSetupPage() {
             <div className="space-y-4">
               <h3 className="text-lg font-semibold text-primary">Company Setup Type</h3>
               <p className="text-sm text-muted-foreground">
-                Select your company type below to continue with the detailed setup process. Click on a card to proceed:
+                Select your company type below to continue with the detailed setup process. Click a card to proceed:
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -216,7 +222,7 @@ export default function GeneralHmrcSetupPage() {
                             Set up HMRC integration for a single legal entity
                           </p>
                           <div className="mt-2 text-xs text-muted-foreground opacity-75">
-                            Best for organizations with one PAYE reference
+                            Best for organisations with one PAYE reference
                           </div>
                         </div>
                       </div>

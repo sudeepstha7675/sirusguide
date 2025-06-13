@@ -31,7 +31,7 @@ export default function PayrollFrequencyPage() {
             <h1 className="text-3xl font-black text-primary">Payroll Frequency Setup</h1>
             {/* Subtitle - 18px, Albert Sans Bold */}
             <p className="text-lg text-muted-foreground mt-1">
-              Configure pay frequency settings for your organization.
+              Configure pay frequency settings for your organisation.
             </p>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function PayrollFrequencyPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on the <span className="font-bold text-primary">Payroll Setups</span> dropdown menu.
+                  Click <span className="font-bold text-primary">Payroll Setups</span> dropdown menu.
                 </p>
               </div>
 

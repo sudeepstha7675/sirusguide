@@ -66,8 +66,7 @@ export default function MultiCompanySetupPage() {
                     2
                   </div>
                   <p className="text-muted-foreground pt-1">
-                    Click <span className="font-semibold text-primary">Multi-Company Settings</span> in the left
-                    navigation
+                    Locate the <span className="font-semibold text-primary">Reporting Section.</span>
                   </p>
                 </div>
                 <div className="flex items-start gap-3">
@@ -75,7 +74,7 @@ export default function MultiCompanySetupPage() {
                     3
                   </div>
                   <p className="text-muted-foreground pt-1">
-                    Toggle <span className="font-semibold text-primary">Enable Multi-Company Mode</span> to activate
+                    Enable <span className="font-semibold text-primary">Multi-Company</span> field.
                   </p>
                 </div>
               </div>
@@ -98,7 +97,7 @@ export default function MultiCompanySetupPage() {
                   </div>
                   Configure Company Details
                 </CardTitle>
-                <p className="text-muted-foreground mt-2">Set up individual company information and HMRC credentials</p>
+                <p className="text-muted-foreground mt-2">Set up individual company information</p>
               </div>
               <Badge className="bg-primary text-primary-foreground">Step 2</Badge>
             </div>
@@ -111,7 +110,7 @@ export default function MultiCompanySetupPage() {
                     1
                   </div>
                   <p className="text-muted-foreground pt-1">
-                    Click on <span className="font-semibold text-primary">Payroll Companies</span> at the top of Payroll
+                    Click <span className="font-semibold text-primary">Payroll Companies</span> at the top of Payroll
                     Setup page
                   </p>
                 </div>
@@ -199,7 +198,7 @@ export default function MultiCompanySetupPage() {
                         </li>
                         <li className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-primary mt-1 shrink-0" />
-                          Standardized submission format
+                          Standardised submission format
                         </li>
                         <li className="flex items-start gap-2">
                           <CheckCircle className="h-4 w-4 text-primary mt-1 shrink-0" />

@@ -181,7 +181,7 @@ export default function PayrollBatchFlowPage() {
         <div className="mb-8">
           <div className="text-center mb-4">
             <h2 className="text-lg font-semibold text-primary mb-2">Choose a Section to Get Started</h2>
-            <p className="text-sm text-muted-foreground">Click on any tab below to navigate through the guide</p>
+            <p className="text-sm text-muted-foreground">Click any tab below to navigate through the guide</p>
           </div>
 
           <TabsList className="grid w-full grid-cols-3 mb-4 h-auto p-2 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl shadow-lg">

@@ -1,7 +1,9 @@
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Settings2 } from "lucide-react"
+import { Settings2, AlertCircle, Mail } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import Link from "next/link"
 
 interface HighlightedTextProps {
   text: string
@@ -15,7 +17,7 @@ const HighlightedText = ({ text, highlights }: HighlightedTextProps) => {
   // Replace each highlight marker with a span (not using dangerouslySetInnerHTML)
   highlights.forEach((highlight) => {
     const marker = `<${highlight}>`
-    result = result.split(marker).join(`<span class="text-primary font-medium">${highlight}</span>`)
+    result = result.split(marker).join(`<span class="text-primary font-semibold">${highlight}</span>`)
   })
 
   // Create segments by splitting on HTML tags
@@ -28,7 +30,7 @@ const HighlightedText = ({ text, highlights }: HighlightedTextProps) => {
           // Extract the content between the span tags
           const content = segment.match(/>([^<]*)</)?.[1] || ""
           return (
-            <span key={i} className="text-primary font-medium">
+            <span key={i} className="text-primary font-semibold">
               {content}
             </span>
           )
@@ -71,7 +73,7 @@ const configurationSteps = [
 export default function ConfigurationPage() {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
-      <div className="mb-8">
+      <div className="space-y-6">
         {/* Enhanced Header */}
         <div className="flex items-center gap-3 mb-6">
           <div className="relative group">
@@ -88,7 +90,16 @@ export default function ConfigurationPage() {
           </div>
         </div>
 
-        {/* Enhanced Configuration Steps Card */}
+        {/* Enhanced Alert */}
+        <Alert className="mb-6 bg-primary/5 border-primary/20">
+          <AlertCircle className="h-5 w-5 text-primary" />
+          <AlertDescription className="ml-2 text-base">
+            Complete these configuration steps to set up your payroll system properly. Make sure to follow each step
+            carefully to ensure optimal functionality.
+          </AlertDescription>
+        </Alert>
+
+        {/* Configuration Steps Card */}
         <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
@@ -98,29 +109,30 @@ export default function ConfigurationPage() {
               Configuration Steps
             </CardTitle>
           </CardHeader>
-          <CardContent className="p-6">
-            <div className="space-y-6">
+          <CardContent className="p-6 space-y-6">
+            <div className="space-y-8">
               {configurationSteps.map((step, index) => (
                 <div
                   key={index}
-                  className="group flex items-start gap-4 p-4 rounded-lg border border-border/50 bg-card hover:bg-primary/5 hover:border-primary/20 transition-all duration-200"
+                  className="flex items-start gap-4 pb-6 border-b border-border/30 last:border-b-0 last:pb-0"
                 >
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-primary/30 rounded-full blur-md transition-all duration-300 group-hover:blur-lg" />
-                    <span className="relative flex-none w-8 h-8 rounded-full bg-gradient-to-br from-primary to-primary/80 text-primary-foreground flex items-center justify-center font-semibold shadow-sm">
-                      {index + 1}
-                    </span>
+                  <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                    {index + 1}
                   </div>
-                  <div className="space-y-3 flex-1">
+                  <div className="space-y-3">
                     <h3 className="text-lg font-semibold text-primary">
                       <HighlightedText text={step.title} highlights={step.highlight || []} />
                     </h3>
-                    <div className="text-muted-foreground text-base">
+                    <p className="text-muted-foreground">
                       <HighlightedText text={step.description} highlights={step.highlight || []} />
-                    </div>
+                    </p>
                     {step.image && (
-                      <div className="mt-4 rounded-lg border-2 border-border overflow-hidden transition-all duration-300 hover:shadow-lg hover:border-primary/30">
-                        <img src={step.image || "/placeholder.svg"} alt={step.title} className="w-full" />
+                      <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+                        <img
+                          src={step.image || "/placeholder.svg"}
+                          alt={step.title}
+                          className="w-full object-contain"
+                        />
                       </div>
                     )}
                   </div>

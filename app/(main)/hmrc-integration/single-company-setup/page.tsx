@@ -223,7 +223,7 @@ export default function SingleCompanySetupPage() {
             <div className="flex items-start gap-3">
               <Check className="h-5 w-5 text-primary mt-0.5 shrink-0" />
               <p className="text-sm text-muted-foreground">
-                Keep your HMRC documentation in a safe place and only share with authorized personnel
+                Keep your HMRC documentation in a safe place and only share with authorised personnel
               </p>
             </div>
             <div className="flex items-start gap-3">

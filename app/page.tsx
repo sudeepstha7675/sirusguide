@@ -34,7 +34,7 @@ export default function HomePage() {
           Payroll Management Made Simple
         </h2>
         <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-          SiriusPayroll365 is your comprehensive cloud-based payroll solution.
+          Sirius Payroll 365 is your comprehensive cloud-based payroll solution.
           Streamline your processes, ensure HMRC compliance, and manage your
           workforce with confidence - all for just <span className="font-semibold text-blue-600">£1.00</span> per
           employee per month.

@@ -61,7 +61,7 @@ export default function PayrollFiscalYearPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on the <span className="font-bold text-primary">Payroll Setups</span> dropdown menu.
+                  Click <span className="font-bold text-primary">Payroll Setups</span> dropdown menu.
                 </p>
               </div>
 

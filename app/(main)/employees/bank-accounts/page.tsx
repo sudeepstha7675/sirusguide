@@ -20,7 +20,7 @@ export default function BankAccountsPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Bank Account Setup Guide</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Configure and manage employee bank account details in Sirius 365.
+              Configure and manage employee bank account details in Sirius Payroll 365.
             </p>
           </div>
         </div>
@@ -51,8 +51,14 @@ export default function BankAccountsPage() {
                   1
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Search for <span className="font-bold text-primary">"Bank Accounts"</span> in the BC search icon, or
+                  Search for <span className="font-bold text-primary">"Bank Accounts"</span> in the BC search icon
                 </p>
+              </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
               </div>
 
               <div className="flex items-start gap-3">
@@ -85,7 +91,7 @@ export default function BankAccountsPage() {
               Bank Account Preference
             </CardTitle>
             <p className="text-muted-foreground mt-2">
-              Overview of the bank account types and preferences available in Sirius 365
+              Overview of the bank account types and preferences available in Sirius Payroll 365
             </p>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
@@ -130,7 +136,7 @@ export default function BankAccountsPage() {
               <Info className="h-5 w-5 text-blue-600" />
               <AlertDescription className="ml-2 text-base text-blue-800">
                 <span className="font-semibold">Note:</span> You can set up multiple bank accounts for each employee and
-                specify an account preference. Payments are prioritized to the{" "}
+                specify an account preference. Payments are prioritised to the{" "}
                 <span className="font-semibold">Primary Account</span>. If any one account is marked as{" "}
                 <span className="font-semibold">Inactive</span>, payments will be directed to another{" "}
                 <span className="font-semibold">Active</span> account instead.

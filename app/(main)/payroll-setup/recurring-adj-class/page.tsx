@@ -94,7 +94,7 @@ export default function RecurringAdjClassPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on <span className="font-bold text-primary">Recurring Adjustment Class</span>.
+                  Click <span className="font-bold text-primary">Recurring Adjustment Class</span>.
                 </p>
               </div>
             </div>
@@ -176,7 +176,7 @@ export default function RecurringAdjClassPage() {
                   2
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Click on <span className="font-bold text-primary">Recurring Adjustment Class</span>.
+                  Click <span className="font-bold text-primary">Recurring Adjustment Class</span>.
                 </p>
               </div>
             </div>

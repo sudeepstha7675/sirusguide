@@ -20,7 +20,7 @@ export default function ManageEmployeesPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Employee Setup Guide</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Learn how to set up and configure employee information in Sirius 365.
+              Learn how to set up and configure employee information in Sirius Payroll 365.
             </p>
           </div>
         </div>
@@ -29,7 +29,7 @@ export default function ManageEmployeesPage() {
         <Alert className="mb-6 bg-primary/5 border-primary/20">
           <Info className="h-5 w-5 text-primary" />
           <AlertDescription className="ml-2 text-base">
-            This guide walks you through the employee setup process in Sirius 365, showing you how to configure various
+            This guide walks you through the employee setup process in Sirius Payroll 365, showing you how to configure various
             aspects of employee information including general details, payroll settings, calendar configurations, and
             HMRC-required information.
           </AlertDescription>
@@ -52,8 +52,14 @@ export default function ManageEmployeesPage() {
                   1
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Search for <span className="font-bold text-primary">"Employees"</span> in the BC search icon, or
+                  Search for <span className="font-bold text-primary">"Employees"</span> in the BC search icon
                 </p>
+              </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
               </div>
 
               <div className="flex items-start gap-3">
@@ -86,7 +92,7 @@ export default function ManageEmployeesPage() {
               Available Configuration Sections
             </CardTitle>
             <p className="text-muted-foreground mt-2">
-              Overview of the key sections available for employee setup in Sirius 365
+              Overview of the key sections available for employee setup in Sirius Payroll 365
             </p>
           </CardHeader>
           <CardContent className="p-6 space-y-6">

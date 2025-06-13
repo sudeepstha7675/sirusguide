@@ -60,8 +60,14 @@ export default function HmrcUpdatesEmployeePage() {
                   1
                 </div>
                 <p className="text-muted-foreground pt-1">
-                  Search for <span className="font-bold text-primary">"HMRC Updates"</span> in the BC search icon, or
+                  Search for <span className="font-bold text-primary">"HMRC Updates"</span> in the BC search icon
                 </p>
+              </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
               </div>
 
               <div className="flex items-start gap-3">
@@ -93,7 +99,7 @@ export default function HmrcUpdatesEmployeePage() {
               </div>
               Available HMRC Documents
             </CardTitle>
-            <p className="text-muted-foreground mt-2">Overview of HMRC documents and updates in Sirius 365</p>
+            <p className="text-muted-foreground mt-2">Overview of HMRC documents and updates in Sirius Payroll 365</p>
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

@@ -17,7 +17,7 @@ export default function PayAdjustmentsPage() {
           </div>
           <div>
             <h1 className="text-3xl font-black text-primary">Pay Adjustments Processing Guide</h1>
-            <p className="text-lg text-muted-foreground mt-1">Configure and manage pay adjustments in Sirius 365</p>
+            <p className="text-lg text-muted-foreground mt-1">Configure and manage pay adjustments in Sirius Payroll 365</p>
           </div>
         </div>
 
@@ -34,7 +34,7 @@ export default function PayAdjustmentsPage() {
           <CardContent className="p-6">
             <div className="space-y-4">
               <p className="text-muted-foreground">
-                Pay Adjustments in Sirius 365 allow you to create various types of adjustments to employee compensation.
+                Pay Adjustments in Sirius Payroll 365 allow you to create various types of adjustments to employee compensation.
                 Available adjustment types include:
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -103,9 +103,16 @@ export default function PayAdjustmentsPage() {
                 </div>
                 <p className="text-muted-foreground pt-1">
                   Search for <span className="font-semibold text-primary">"Pay Adjustments"</span> in the BC search
-                  icon, or
+                  icon
                 </p>
               </div>
+
+              <div className="flex justify-start pl-10">
+                <div className="inline-flex items-center justify-center px-4 py-2 bg-primary/10 rounded-full">
+                  <span className="text-primary font text-medium">OR</span>
+                </div>
+              </div>
+
               <div className="flex items-start gap-3">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
                   2
@@ -120,7 +127,7 @@ export default function PayAdjustmentsPage() {
               <img src="/PayAdjustment1.png" alt="PayAdjustment" className="w-full object-contain" />
             </div>
             <p className="text-muted-foreground mt-2">
-              Highlighted below are the available Pay Adjustments in Sirius Payroll 365 which shows once it is
+              Highlighted below are the available Pay Adjustments in Sirius Payroll 365, which shows once it is
               configured by the user which can be selected as per requirement.
             </p>
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">

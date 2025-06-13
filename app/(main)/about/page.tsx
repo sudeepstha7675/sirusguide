@@ -19,7 +19,7 @@ export default function AboutPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">About Sirius Payroll 365</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Automating payroll, reducing errors, and ensuring HMRC compliance.
+              Sirius Payroll 365: HMRC-Recognised, Cloud-Hosted, Dynamics 365-Integrated Payroll Management
             </p>
           </div>
         </div>
@@ -35,8 +35,7 @@ export default function AboutPage() {
           <Alert className="mb-6 bg-primary/5 border-primary/20">
             <Info className="h-5 w-5 text-primary" />
             <AlertDescription className="ml-2 text-base">
-              SiriusPayroll365 is an ERP payroll solution designed to automate manual paperwork and significantly reduce
-              human errors.
+             Sirius Payroll 365 is an HMRC-recognised, cloud-hosted payroll solution designed to bring your entire UK payroll ecosystem under one roof. Built on Microsoft Azure and seamlessly integrated with Dynamics 365 Business Central and Dynamics 365 Human Resources, it consolidates HR and finance data to ensure precision, compliance and end-to-end visibility.
             </AlertDescription>
           </Alert>
           <p className="text-muted-foreground leading-relaxed">
@@ -61,9 +60,8 @@ export default function AboutPage() {
             </div>
             <div className="col-span-2 space-y-4">
               <p className="text-muted-foreground leading-relaxed">
-                Sirius App is a proud company under the <strong className="text-foreground">Dogma Group Limited</strong>
-                . We combine industry expertise with innovative technology to deliver exceptional payroll solutions.
-              </p>
+                Sirius Payroll 365 is a product of SiriusApp—part of the <strong className="text-foreground">Dogma Group.</strong>
+                             </p>
               <div className="p-4 border rounded-lg bg-muted/30">
                 <p className="text-sm text-muted-foreground">
                   <strong>Registered at:</strong> 6 Portal Business Park, Suite 3 & 4, Eaton Lane, Tarporley, CW6 9DL

@@ -18,7 +18,7 @@ export default function BeforePostingReportsPage() {
           <div>
             <h1 className="text-3xl font-black text-primary">Before Posting Reports</h1>
             <p className="text-lg text-muted-foreground mt-1">
-              Generate and review reports before finalizing payroll posting
+              Generate and review reports before finalising payroll posting
             </p>
           </div>
         </div>
