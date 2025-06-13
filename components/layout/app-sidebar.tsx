@@ -18,9 +18,8 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
-import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
-import { ChevronDown, LogOut } from "lucide-react"
+import { ChevronDown, Mail, Phone } from 'lucide-react'
 
 export function AppSidebar() {
   const pathname = usePathname()
@@ -33,29 +32,34 @@ export function AppSidebar() {
 
       if (item.items && item.items.length > 0) {
         const isParentActive = item.items.some((subItem) => subItem.href !== "#" && pathname.startsWith(subItem.href))
+        const isOpen = isParentActive || isActive
 
         return (
-          <Collapsible key={item.title} defaultOpen={isParentActive} className="group/collapsible">
+          <Collapsible key={item.title} defaultOpen={isOpen} className="group/collapsible">
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
                 <SidebarMenuButton
                   className={cn(
-                    "w-full justify-between hover:bg-sidebar-accent dark:hover:bg-sidebar-accent",
-                    isActive &&
-                      !isParentActive &&
-                      "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
+                    "w-full justify-between",
+                    (isActive || isParentActive) && 
+                      "bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary border-l-2 border-primary dark:border-primary font-medium"
                   )}
-                  variant="outline"
                   tooltip={item.title}
-                  disabled={item.href === "#"} // Disable trigger if parent href is "#"
+                  disabled={item.href === "#"}
                 >
                   <div className="flex items-center">
-                    <item.icon className="mr-2 h-5 w-5 flex-shrink-0" />
-                    <span className={cn("truncate", { "sr-only": state === "collapsed" && !isMobile })}>
+                    <item.icon className={cn(
+                      "mr-2 h-4 w-4 flex-shrink-0",
+                      (isActive || isParentActive) && "text-primary dark:text-primary"
+                    )} />
+                    <span className={cn(
+                      "truncate", 
+                      { "sr-only": state === "collapsed" && !isMobile }
+                    )}>
                       {item.title}
                     </span>
                   </div>
-                  <ChevronDown className="ml-auto h-4 w-4 shrink-0 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
+                  <ChevronDown className="ml-auto h-3.5 w-3.5 shrink-0 opacity-70 transition-transform duration-200 group-data-[state=open]/collapsible:rotate-180" />
                 </SidebarMenuButton>
               </CollapsibleTrigger>
               <CollapsibleContent>
@@ -68,16 +72,17 @@ export function AppSidebar() {
                           <SidebarMenuSubButton
                             isActive={isSubActive}
                             className={cn(
-                              "hover:bg-sidebar-accent dark:hover:bg-sidebar-accent",
-                              isSubActive &&
-                                "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
                               "w-full justify-start",
+                              isSubActive && "bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary border-l-2 border-primary dark:border-primary font-medium pl-[calc(0.75rem-2px)]",
                               subItem.href === "#" && "pointer-events-none opacity-50"
                             )}
                             title={subItem.title}
                             aria-disabled={subItem.href === "#"}
                           >
-                            <subItem.icon className="mr-2 h-4 w-4 flex-shrink-0" />
+                            <subItem.icon className={cn(
+                              "mr-2 h-3.5 w-3.5 flex-shrink-0",
+                              isSubActive && "text-primary dark:text-primary"
+                            )} />
                             <span className={cn("truncate", { "sr-only": state === "collapsed" && !isMobile })}>
                               {subItem.title}
                             </span>
@@ -99,16 +104,16 @@ export function AppSidebar() {
             <SidebarMenuButton
               isActive={isActive}
               className={cn(
-                "hover:bg-sidebar-accent dark:hover:bg-sidebar-accent",
-                isActive &&
-                  "bg-primary text-primary-foreground dark:bg-primary dark:text-primary-foreground font-semibold",
                 "w-full justify-start",
+                isActive && "bg-primary/10 dark:bg-primary/20 text-primary dark:text-primary border-l-2 border-primary dark:border-primary font-medium pl-[calc(0.75rem-2px)]"
               )}
-              variant={isActive ? "default" : "outline"}
               tooltip={item.title}
               disabled={item.href === "#"}
             >
-              <item.icon className="mr-2 h-5 w-5 flex-shrink-0" />
+              <item.icon className={cn(
+                "mr-2 h-4 w-4 flex-shrink-0",
+                isActive && "text-primary dark:text-primary"
+              )} />
               <span className={cn("truncate", { "sr-only": state === "collapsed" && !isMobile })}>{item.title}</span>
             </SidebarMenuButton>
           </Link>
@@ -118,8 +123,13 @@ export function AppSidebar() {
   }
 
   return (
-    <Sidebar collapsible="icon" side="left" className="border-r bg-card print:hidden">
-      <SidebarHeader className="p-4 border-b">
+    <Sidebar 
+      collapsible="icon" 
+      side="left" 
+      className="border-r print:hidden min-w-[281px] w-[281px]" // Updated width
+    >
+      {/* Professional Header */}
+      <SidebarHeader className="p-5 border-b">
         <Link href="/" className="flex items-center gap-2">
           <Image
             src="/sirius.svg" 
@@ -136,51 +146,45 @@ export function AppSidebar() {
           </span>
         </Link>
       </SidebarHeader>
-      <SidebarContent className="p-2">
-        <ScrollArea className="h-[calc(100vh-230px)]">
-          {" "}
-          {/* Adjusted height for new footer content */}
-          <SidebarMenu>{renderNavItems(sidebarNavItems)}</SidebarMenu>
+
+      {/* Clean Content Layout */}
+      <SidebarContent>
+        <ScrollArea className="h-[calc(100vh-180px)]">
+          <SidebarMenu className="px-2 py-2">
+            {renderNavItems(sidebarNavItems)}
+          </SidebarMenu>
         </ScrollArea>
       </SidebarContent>
-      <SidebarFooter className="p-4 border-t text-xs text-muted-foreground">
-        <div className="flex flex-col gap-3">
-          <div
-            className={cn("flex items-center gap-2 px-1", {
-              "justify-center": state === "collapsed" && !isMobile,
-            })}
-          >
-            <Image src="/dogma.svg" alt="Dogma Group Logo" width={36} height={36} className="rounded-sm" />
-            <span className={cn({ "sr-only": state === "collapsed" && !isMobile })}>
-              Sirius App by Dogma Group Ltd.
-            </span>
+
+      {/* Professional Footer */}
+      <SidebarFooter className="border-t">
+        <div className="p-3 space-y-2">
+          {/* Company Info */}
+          <div className={cn(
+            "flex items-center gap-3 p-2 rounded-md",
+            { "justify-center": state === "collapsed" && !isMobile }
+          )}>
+            <div className="w-7 h-7 rounded-md bg-muted flex items-center justify-center">
+              <Image
+                src="/dogma.svg"
+                alt="Dogma Group Logo"
+                width={16}
+                height={16}
+                className="w-4 h-4 object-contain"
+              />
+            </div>
+            <div className={cn("flex flex-col", { "sr-only": state === "collapsed" && !isMobile })}>
+              <span className="text-xs font-medium">Dogma Group Ltd</span>
+              <span className="text-[11px] text-muted-foreground"></span>
+            </div>
           </div>
-          <div className={cn("text-center space-y-0.5", { "sr-only": state === "collapsed" && !isMobile })}>
-            <p>Reg: 6 Portal Business Park, Eaton Lane, Tarporley, CW6 9DL</p>
-            <p>VAT No: 330460638 | Co No: 12096627</p>
-            <p>
-              <a href="mailto:info@siriusapp.co.uk" className="hover:text-secondary">
-                info@siriusapp.co.uk
-              </a>{" "}
-              |
-              <a href="tel:01296328689" className="hover:text-secondary">
-                {" "}
-                01296 328689
-              </a>
-            </p>
-            <p>
-              <a
-                href="https://www.siriusapp.co.uk"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-secondary"
-              >
-                www.siriusapp.co.uk
-              </a>
-            </p>
-          </div>
+          
         </div>
       </SidebarFooter>
     </Sidebar>
   )
+}
+
+function useState(arg0: number): [any, any] {
+  throw new Error("Function not implemented.")
 }

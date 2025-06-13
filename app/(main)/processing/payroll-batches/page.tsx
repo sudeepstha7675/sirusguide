@@ -1,586 +1,630 @@
 "use client"
 
+import { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Progress } from "@/components/ui/progress"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
-import {
+  Calculator,
   Users,
   FileCheck,
-  Calculator,
   Play,
   CheckCircle,
+  ClipboardList,
   ArrowRight,
   AlertCircle,
-  ClipboardList,
   Info,
   Clock,
   ChevronRight,
-  ChevronDown,
-  ArrowUpRight,
-  Bookmark,
-  Eye,
-  X
+  Home,
+  BookOpen,
 } from "lucide-react"
 
 export default function PayrollBatchFlowPage() {
+  const [activeStep, setActiveStep] = useState(1)
+
+  const navigationItems = [
+    { id: "overview", label: "Overview", icon: Home },
+    { id: "prerequisites", label: "Prerequisites", icon: CheckCircle },
+    { id: "process", label: "Process Steps", icon: BookOpen },
+  ]
+
   const processSteps = [
     {
       step: 1,
       title: "Fill General Details",
       description: "Complete payroll batch card with period and basic information",
       icon: ClipboardList,
-      color: "bg-slate-800 dark:bg-slate-700",
-      substeps: [
+      content: [
         "Fill in all required fields in General Section",
+        "Double-check period dates",
+        "Ensure correct frequency is selected",
       ],
-      images: ["/PayrollBatch1.png"],
-      tips: ["Double-check period dates", "Ensure correct frequency is selected"]
+      image: "/PayrollBatch1.png",
     },
     {
       step: 2,
       title: "Add Employees",
       description: "Import employees for the payroll period",
       icon: Users,
-      color: "bg-slate-800 dark:bg-slate-700",
-      substeps: [
+      content: [
         "Navigate to Prepare tab",
         "Click Add Employees",
-        "Confirm employee import in pop-up"
+        "Confirm employee import in pop-up",
+        "Verify employee count matches expected",
+        "Check for any import errors",
       ],
-      images: ["/PayrollBatch2.png"],
-      tips: ["Verify employee count matches expected", "Check for any import errors"]
+      image: "/PayrollBatch2.png",
     },
     {
       step: 3,
       title: "Get Pay Elements",
       description: "Pull all employee elements and timesheets",
       icon: Calculator,
-      color: "bg-slate-800 dark:bg-slate-700",
-      substeps: [
-        "1. Navigate to Prepare tab",
-        "2. Click Get Pay Elements",
-        "3. System pulls:",
-        "   • Employee Elements",
-        "   • Timesheet Details",
-        "   • Released Pay Elements"
+      content: [
+        "Navigate to Prepare tab",
+        "Click Get Pay Elements",
+        "System pulls Employee Elements",
+        "System pulls Timesheet Details",
+        "System pulls Released Pay Elements",
+        "Ensure all timesheets are submitted",
+        "Check for pending adjustments",
       ],
-      images: ["/PayrollBatch3.png"],
-      tips: ["Ensure all timesheets are submitted", "Check for pending adjustments"]
+      image: "/PayrollBatch3.png",
     },
     {
       step: 4,
       title: "Process Pay Elements",
       description: "Process and validate pay elements with error handling",
       icon: Play,
-      color: "bg-blue-700 dark:bg-blue-800",
+      isComplex: true,
       scenarios: [
         {
           title: "Successful Processing",
+          type: "success",
           steps: [
-            "1. Navigate to Prepare tab",
-            "2. Click Process Pay Elements",
-            "3. Success popup appears",
-            "4. Click OK to continue",
+            "Navigate to Prepare tab",
+            "Click Process Pay Elements",
+            "Success popup appears",
+            "Click OK to continue",
           ],
           images: ["/PayrollBatch4.png", "/PayrollBatch5.png"],
-          outcome: "Proceed to Step 5"
+          outcome: "Proceed to Step 5",
         },
         {
           title: "Error Handling - Autocorrect",
+          type: "warning",
           steps: [
-            "1. Review Payroll Error Logs",
-            "2. Enable Autocorrect function",
-            "3. Click Process → Update Records",
-            "4. Review and confirm updates",
-            "5. Return to Step 3 (Get Pay Elements)",
-            "6. Reprocess all elements"
+            "Review Payroll Error Logs",
+            "Enable Autocorrect function",
+            "Click Process → Update Records",
+            "Review and confirm updates",
+            "Return to Step 3 (Get Pay Elements)",
+            "Reprocess all elements",
           ],
           images: ["/PayrollBatch6.png", "/PayrollBatch7.png"],
-          outcome: "Must restart from Step 3"
+          outcome: "Must restart from Step 3",
         },
         {
           title: "Error Handling - Manual Update",
+          type: "error",
           steps: [
-            "1. Review Payroll Error Logs",
-            "2. Locate error fields",
-            "3. Make manual corrections",
-            "4. Return to Step 3 (Get Pay Elements)",
-            "5. Reprocess all elements"
+            "Review Payroll Error Logs",
+            "Locate error fields",
+            "Make manual corrections",
+            "Return to Step 3 (Get Pay Elements)",
+            "Reprocess all elements",
           ],
-          outcome: "Must restart from Step 3"
-        }
-      ],
-      substeps: [
-        "Scenario 1: No Errors",
-        "• Process Pay Elements → Success popup → Continue",
-        "",
-        "Scenario 2: Using Autocorrect",
-        "• View Error Logs → Enable Autocorrect → Update Records",
-        "• Return to Step 3 → Reprocess",
-        "",
-        "Scenario 3: Manual Updates",
-        "• View Error Logs → Fix Manually → Return to Step 3",
-        "• Reprocess all elements"
+          outcome: "Must restart from Step 3",
+        },
       ],
       warning: "ANY modifications (autocorrect or manual) require restarting from Step 3 (Get Pay Elements)",
-      tips: [
-        "Check error logs before choosing correction method",
-        "Prefer Autocorrect for multiple similar errors",
-        "Use manual updates for specific cases",
-        "Always reprocess after any changes"
-      ]
     },
     {
       step: 5,
       title: "Calculate & Release",
       description: "Perform tax calculations and generate net pay",
       icon: Calculator,
-      color: "bg-slate-800 dark:bg-slate-700",
-      substeps: [
-        "1. Navigate to Prepare tab",
-        "2. Click Calculate and Release",
-        "3. System performs:",
-        "   • Tax calculations",
-        "   • Net pay generation",
-        "   • Final validation checks"
+      content: [
+        "Navigate to Prepare tab",
+        "Click Calculate and Release",
+        "System performs tax calculations",
+        "System generates net pay",
+        "System runs final validation checks",
       ],
-      images: ["/PayrollBatch8.png"]
+      image: "/PayrollBatch8.png",
     },
     {
       step: 6,
       title: "Post Payroll Batch",
       description: "Final posting - cannot be modified after this step",
       icon: CheckCircle,
-      color: "bg-slate-800 dark:bg-slate-700",
-      substeps: [
+      content: [
         "Click Post to finalize batch",
         "Confirm posting action",
-        "Batch moves to Posted Payroll Batch under History"
+        "Batch moves to Posted Payroll Batch under History",
       ],
       warning: "This step cannot be undone. Changes after posting require full batch reversal.",
-      tips: ["Run pre-posting validation", "Generate draft reports before posting"],
-      images: ["/PayrollBatch9.png"]
-    }
+      image: "/PayrollBatch9.png",
+      isCritical: true,
+    },
   ]
 
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
+      {/* Header */}
       <div className="mb-8">
-        {/* Header Section with Key Information Cards */}
-        <div className="mb-8 space-y-6">
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-blue-600 to-blue-800 dark:from-blue-700 dark:to-blue-900 p-8 text-white">
-            <div className="absolute inset-0 bg-grid-white/10 mix-blend-soft-light" />
-            <div className="relative">
-              <div className="flex items-center gap-6 mb-6">
-                <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/10">
-                  <Calculator className="h-8 w-8 text-white" />
-                </div>
-                <div>
-                  <h1 className="text-4xl font-bold mb-1">Payroll Batch Processing</h1>
-                  <p className="text-lg text-white/80">
-                    Complete guide to process your payroll batch efficiently
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-                <Card className="bg-blue-600/20 backdrop-blur-sm border-white/10 hover:bg-blue-600/30 transition-colors">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
-                        <CheckCircle className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-white/80">Total Steps</p>
-                        <p className="text-sm text-white/80">6 Major Steps</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-blue-600/20 backdrop-blur-sm border-white/10 hover:bg-blue-600/30 transition-colors">
-                  <CardContent className="p-4">
-                    <div className="flex items-center gap-3">
-                      <div className="p-2 rounded-lg bg-white/10 backdrop-blur-sm">
-                        <AlertCircle className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <p className="text-sm text-white/80">Attention Level</p>
-                        <p className="text-sm text-white/80">High Priority</p>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+        <div className="flex items-center gap-3 mb-4">
+          <div className="relative group cursor-pointer">
+            <div className="absolute inset-0 bg-primary/30 rounded-xl blur-md transition-all duration-300 group-hover:bg-primary/40 group-hover:blur-lg" />
+            <div className="relative w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/30 group-hover:-translate-y-1">
+              <Calculator className="h-5 w-5 text-primary-foreground transition-all duration-300 group-hover:scale-110" />
             </div>
           </div>
+          <div>
+            <h1 className="text-4xl font-bold text-primary">Payroll Batch Processing</h1>
+            <p className="text-muted-foreground text-lg mt-1">
+              Complete guide to process your payroll batch efficiently
+            </p>
+          </div>
+        </div>
+        <p className="text-muted-foreground mb-6 text-lg">
+          Follow this comprehensive step-by-step guide to ensure accurate and efficient payroll processing for your
+          organization.
+        </p>
+      </div>
 
-          {/* Overview Section */}
-          <Card className="border-slate-200 dark:border-slate-800">
-            <CardHeader className="pb-4">
-              <CardTitle className="flex items-center gap-2 text-xl">
-                <div className="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/30">
-                  <Info className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+      {/* Navigation Tabs */}
+      <Tabs defaultValue="overview" className="w-full">
+        {/* Enhanced Navigation Tabs with Clear Call-to-Action */}
+        <div className="mb-8">
+          <div className="text-center mb-4">
+            <h2 className="text-lg font-semibold text-primary mb-2">Choose a Section to Get Started</h2>
+            <p className="text-sm text-muted-foreground">Click on any tab below to navigate through the guide</p>
+          </div>
+
+          <TabsList className="grid w-full grid-cols-3 mb-4 h-auto p-2 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 border-2 border-primary/20 rounded-xl shadow-lg">
+            {navigationItems.map((item) => (
+              <TabsTrigger
+                key={item.id}
+                value={item.id}
+                className="flex flex-col items-center gap-2 p-4 rounded-lg transition-all duration-300 hover:bg-primary/20 hover:shadow-md hover:scale-105 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-xl data-[state=active]:scale-105 group cursor-pointer"
+              >
+                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 group-data-[state=active]:bg-primary-foreground/20 transition-all duration-300">
+                  <item.icon className="h-5 w-5 group-hover:scale-110 transition-transform duration-300" />
                 </div>
-                Payroll Batches Overview
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid gap-6">
-                <div className="grid md:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-xl border border-blue-100 dark:border-blue-900 bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-900">
-                    <h3 className="font-medium text-blue-900 dark:text-blue-200 mb-3 flex items-center gap-2">
-                      <Info className="h-4 w-4" />
-                      About
-                    </h3>
-                    <p className="text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
-                      Payroll Batches is the comprehensive processing of payroll that calculates employees' net pay after adjusting taxes and deductions. This includes automatic pay slip generation, BACS file creation for salary payments, and general ledger posting.
-                    </p>
-                  </div>
+                <span className="text-sm font-medium text-center leading-tight">{item.label}</span>
+                <div className="w-full h-0.5 bg-primary/20 group-data-[state=active]:bg-primary-foreground/50 rounded-full transition-all duration-300" />
+              </TabsTrigger>
+            ))}
+          </TabsList>
 
-                  <div className="p-4 rounded-xl border border-green-100 dark:border-green-900 bg-gradient-to-br from-green-50 to-white dark:from-green-900/20 dark:to-slate-900">
-                    <h3 className="font-medium text-green-900 dark:text-green-200 mb-3 flex items-center gap-2">
-                      <CheckCircle className="h-4 w-4" />
-                      Prerequisites
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-green-500" />
-                        Timesheets processed and released
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-green-500" />
-                        All Statutory Leave Entitlement Cards are released                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-green-500" />
-                        All Pay and Recurring Adjustments are released
-                      </li>
-                    </ul>
-                  </div>
+          {/* Visual indicator */}
+          <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+            <div className="w-2 h-2 bg-primary/50 rounded-full animate-pulse" />
+            <span>Click tabs above to navigate</span>
+            <div className="w-2 h-2 bg-primary/50 rounded-full animate-pulse" />
+          </div>
+        </div>
 
-                  <div className="p-4 rounded-xl border border-amber-100 dark:border-amber-900 bg-gradient-to-br from-amber-50 to-white dark:from-amber-900/20 dark:to-slate-900">
-                    <h3 className="font-medium text-amber-900 dark:text-amber-200 mb-3 flex items-center gap-2">
-                      <ChevronRight className="h-4 w-4" />
-                      How to Access
-                    </h3>
-                    <ul className="space-y-2">
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-amber-500" />
-                        Use BC search icon to find "Payroll Batches"
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-amber-500" />
-                        Or navigate to Processing section
-                      </li>
-                      <li className="flex items-start gap-2 text-sm text-slate-700 dark:text-slate-300">
-                        <ArrowRight className="h-4 w-4 mt-0.5 text-amber-500" />
-                        Click on Payroll Batches
-                      </li>
-                    </ul>
+        {/* Overview Tab */}
+        <TabsContent value="overview" className="space-y-6">
+          <div className="grid gap-6 md:grid-cols-3">
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Info className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-primary">About Payroll Batches</h3>
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Payroll Batches is the comprehensive processing of payroll that calculates employees' net pay after
+                  adjusting taxes and deductions. This includes automatic pay slip generation, BACS file creation for
+                  salary payments, and general ledger posting.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <Clock className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-primary">Process Details</h3>
+                </div>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <div className="flex justify-between">
+                    <span>Total Steps:</span>
+                    <span className="font-semibold text-primary">6 Major Steps</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Estimated Time:</span>
+                    <span className="font-semibold text-primary">30-45 minutes</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Priority Level:</span>
+                    <span className="font-semibold text-primary">High</span>
                   </div>
                 </div>
-              </div>
-              <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] w-full md:w-3/4 lg:w-2/3 mx-auto">
-                <img
-                  src="/PayrollBatch10.png"
-                  alt="Step by Step guide to Payroll Batch"
-                  className="w-full object-contain hover:brightness-105 transition-all duration-300"
-                />
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 rounded-lg bg-primary/10">
+                    <ChevronRight className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-primary">How to Access</h3>
+                </div>
+                <div className="space-y-2 text-sm text-muted-foreground">
+                  <p>
+                    Search for <span className="font-semibold text-primary">"Payroll Batches"</span> in the BC search
+                    icon, or
+                  </p>
+                  <p>
+                    Navigate to <span className="font-semibold text-primary">Processing section → Payroll Batches</span>
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          <Card>
+            <CardContent className="p-6">
+              <div className="border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+                <img src="/PayrollBatch10.png" alt="How to access Payroll Batches" className="w-full object-contain" />
               </div>
             </CardContent>
           </Card>
-        </div>
+        </TabsContent>
 
-        {/* Process Steps */}
-        <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <h2 className="text-2xl font-semibold">Process Steps</h2>
-            <Badge variant="outline" className="text-sm">
+        {/* Prerequisites Tab */}
+        <TabsContent value="prerequisites" className="space-y-6">
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-primary flex items-center gap-2">
+                <CheckCircle className="h-5 w-5" />
+                Prerequisites Checklist
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-muted-foreground mb-6">
+                Before starting the payroll batch process, ensure all the following items are completed:
+              </p>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-medium text-primary">1</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-primary">Timesheets Processed</p>
+                      <p className="text-muted-foreground text-sm">
+                        All employee timesheets must be processed and released
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-medium text-primary">2</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-primary">Leave Entitlement Cards</p>
+                      <p className="text-muted-foreground text-sm">
+                        All Statutory Leave Entitlement Cards are released
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-medium text-primary">3</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-primary">Pay Adjustments</p>
+                      <p className="text-muted-foreground text-sm">All Pay and Recurring Adjustments are released</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <span className="text-xs font-medium text-primary">4</span>
+                    </div>
+                    <div>
+                      <p className="font-semibold text-primary">System Access</p>
+                      <p className="text-muted-foreground text-sm">Proper permissions to access Payroll Batches</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Critical Reminders moved to Prerequisites */}
+          <Card className="border-destructive/50">
+            <CardHeader>
+              <CardTitle className="text-primary flex items-center gap-2">
+                <AlertCircle className="h-5 w-5" />
+                Critical Process Reminders
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="grid gap-6 md:grid-cols-2">
+                <div>
+                  <h4 className="font-semibold text-primary mb-4 flex items-center gap-2">
+                    <FileCheck className="h-5 w-5" />
+                    Process Integrity
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="text-destructive font-bold">×</span>
+                      <span className="text-muted-foreground text-sm">Never skip steps or alter sequence</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-destructive font-bold">×</span>
+                      <span className="text-muted-foreground text-sm">Don't proceed with unresolved errors</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <h4 className="font-semibold text-primary mb-4 flex items-center gap-2">
+                    <AlertCircle className="h-5 w-5" />
+                    Data Safety
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start gap-3">
+                      <span className="text-destructive font-bold">×</span>
+                      <span className="text-muted-foreground text-sm">No changes after final posting</span>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="text-destructive font-bold">×</span>
+                      <span className="text-muted-foreground text-sm">
+                        Whole Batch Reversals needed for corrections
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </TabsContent>
+
+        {/* Process Steps Tab */}
+        <TabsContent value="process" className="space-y-6">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-2xl font-semibold text-primary">Process Steps</h2>
+            <Badge variant="outline" className="border-primary/30 text-primary">
               Follow in Sequence
             </Badge>
           </div>
 
-          <Accordion type="multiple" className="space-y-4">
-            {processSteps.map((step, index) => (
-              <AccordionItem key={step.step} value={`step-${step.step}`} className="rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800">
-                <div className="relative">
-                  {/* Progress Indicator - Made more subtle */}
-                  <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-blue-400/40 to-blue-500/40 dark:from-blue-500/30 dark:to-blue-600/30" />
-
-                  <AccordionTrigger className="px-6 py-4 hover:no-underline hover:bg-slate-50/50 dark:hover:bg-slate-800/50 transition-colors group">
-                    <div className="flex items-center gap-4 w-full">
-                      {/* Step Number with enhanced visual */}
-                      <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-900 border border-blue-100 dark:border-blue-800/50 shadow-sm">
-                        <span className="text-base font-semibold text-blue-700 dark:text-blue-300">{step.step}</span>
-                      </div>
-
-                      <div className="flex-1 text-left">
-                        <div className="flex items-center gap-3 mb-1">
-                          {/* Step Icon */}
-                          <div className={`p-1.5 rounded-md ${step.warning
-                            ? 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
-                            : 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400'
-                            }`}>
-                            <step.icon className="h-4 w-4" />
-                          </div>
-                          <h3 className="text-lg font-semibold flex items-center gap-3 text-slate-900 dark:text-slate-100">
-                            {step.title}
-                            {step.warning && (
-                              <Badge variant="destructive" className="text-xs">
-                                Caution Required
-                              </Badge>
-                            )}
-                          </h3>
-                        </div>
-                        <div className="flex items-center gap-4">
-                          <p className="text-sm text-slate-500 dark:text-slate-400">{step.description}</p>
-                        </div>
-                      </div>
-
-                      {/* Custom Chevron */}
-                      <div className="flex items-center justify-center w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 group-hover:bg-blue-50 dark:group-hover:bg-blue-900/20 transition-colors">
-                        <ChevronDown className="h-4 w-4 text-slate-500 dark:text-slate-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-transform group-data-[state=open]:rotate-180" />
-                      </div>
-                    </div>
-                  </AccordionTrigger>
-
-                  <AccordionContent>
-                    <div className="px-6 pb-6 pt-2">
-                      <div className="grid gap-6">
-                        {/* Action Steps */}
-                        <div className="space-y-4">
-                          {step.scenarios ? (
-                            // Special handling for Step 4 scenarios
-                            <div className="space-y-4">
-                              {/* Warning Section */}
-                              {step.warning && (
-                                <div className="bg-red-50/50 dark:bg-red-900/20 rounded-lg p-4 border border-red-100 dark:border-red-900/50 mb-6">
-                                  <div className="flex gap-3">
-                                    <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 shrink-0" />
-                                    <p className="text-sm text-red-800 dark:text-red-200 font-medium">{step.warning}</p>
-                                  </div>
-                                </div>
-                              )}
-
-                              {/* Scenarios */}
-                              {step.scenarios.map((scenario, i) => (
-                                <Accordion type="single" collapsible key={i}>
-                                  <AccordionItem value="scenario">
-                                    <div className={`rounded-lg overflow-hidden shadow-sm ${i === 0
-                                      ? 'border border-green-200 dark:border-green-800 bg-white dark:bg-slate-900'
-                                      : 'border border-amber-200 dark:border-amber-800 bg-white dark:bg-slate-900'
-                                      }`}>
-                                      <AccordionTrigger className="hover:no-underline w-full">
-                                        <div className={`py-2 px-4 border-b w-full ${i === 0
-                                          ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800'
-                                          : 'bg-amber-50 border-amber-200 dark:bg-amber-900/20 dark:border-amber-800'
-                                          }`}>
-                                          <div className="flex items-center gap-3">
-                                            {i === 0 ? (
-                                              <>
-                                                <div className="p-1.5 rounded-full bg-green-100 dark:bg-green-900/50">
-                                                  <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
-                                                </div>
-                                                <h4 className="font-medium text-green-900 dark:text-green-300">
-                                                  {scenario.title}
-                                                </h4>
-                                              </>
-                                            ) : (
-                                              <>
-                                                <div className="p-1.5 rounded-full bg-amber-100 dark:bg-amber-900/50">
-                                                  <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
-                                                </div>
-                                                <h4 className="font-medium text-amber-900 dark:text-amber-300">
-                                                  {scenario.title}
-                                                </h4>
-                                              </>
-                                            )}
-                                          </div>
-                                        </div>
-                                      </AccordionTrigger>
-                                      <AccordionContent>
-                                        <div className="p-4">
-                                          <div className="space-y-3">
-                                            {scenario.steps.map((step, j) => (
-                                              <div key={j} className="flex items-start gap-3">
-                                                <div className="rounded-full bg-blue-50 dark:bg-blue-900/20 p-1 mt-0.5">
-                                                  <Play className="h-3 w-3 text-blue-600 dark:text-blue-400" />
-                                                </div>
-                                                <p className="text-sm text-slate-600 dark:text-slate-400">
-                                                  {step}
-                                                </p>
-                                              </div>
-                                            ))}
-                                            {scenario.outcome && (
-                                              <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
-                                                <p className="text-sm font-medium text-slate-900 dark:text-slate-200">
-                                                  Outcome: <span className="text-slate-600 dark:text-slate-400 font-normal">{scenario.outcome}</span>
-                                                </p>
-                                              </div>
-                                            )}
-                                          </div>
-                                        </div>
-
-                                        {/* Scenario Screenshots if available */}
-                                        {scenario.images && scenario.images.length > 0 && (
-                                          <div className="mt-6 space-y-4">
-                                            {scenario.images.map((image, imageIndex) => (
-                                              <div
-                                                key={imageIndex}
-                                                className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] w-full md:w-3/4 lg:w-2/3 mx-auto">
-                                                <img
-                                                  src={image}
-                                                  alt={`${scenario.title} - Step ${imageIndex + 1}`}
-                                                  className="w-full h-auto"
-                                                />
-                                              </div>
-                                            ))}
-                                          </div>
-                                        )}
-                                      </AccordionContent>
-                                    </div>
-                                  </AccordionItem>
-                                </Accordion>
-                              ))}
-
-                              {/* Tips Section */}
-                              {step.tips && (
-                                <div className="bg-amber-50/50 dark:bg-amber-900/20 rounded-lg p-4 border border-amber-100 dark:border-amber-900/50 mt-6">
-                                  <h4 className="font-medium text-amber-900 dark:text-amber-300 flex items-center gap-2 mb-3">
-                                    <Info className="h-4 w-4" />
-                                    Pro Tips
-                                  </h4>
-                                  <ul className="space-y-2">
-                                    {step.tips.map((tip, i) => (
-                                      <li key={i} className="flex items-start gap-2 text-sm text-amber-800 dark:text-amber-200">
-                                        <ArrowRight className="h-4 w-4 shrink-0 mt-0.5 text-amber-500" />
-                                        {tip}
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
-                              )}
-                            </div>
-                          ) : (
-                            // Regular step layout
-                            <div className="space-y-4">
-                              <div className="grid gap-4">
-                                {step.substeps && (
-                                  <div className="space-y-3">
-                                    {step.substeps.map((substep, i) => (
-                                      <div key={i} className="flex items-start gap-3">
-                                        <div className="rounded-full bg-blue-50 dark:bg-blue-900/20 p-1.5 mt-0.5">
-                                          <ArrowRight className="h-4 w-4 text-blue-600 dark:text-blue-400" />
-                                        </div>
-                                        <span className="text-slate-700 dark:text-slate-300">{substep}</span>
-                                      </div>
-                                    ))}
-                                  </div>
-                                )}
-
-                                {step.tips && (
-                                  <div className="bg-amber-50/50 dark:bg-amber-900/20 rounded-lg p-4 border border-amber-100 dark:border-amber-900/50">
-                                    <h4 className="font-medium text-amber-900 dark:text-amber-300 flex items-center gap-2 mb-3">
-                                      <Info className="h-4 w-4" />
-                                      Pro Tips
-                                    </h4>
-                                    <ul className="space-y-2">
-                                      {step.tips.map((tip, i) => (
-                                        <li key={i} className="flex items-start gap-2 text-sm text-amber-800 dark:text-amber-200">
-                                          <ArrowUpRight className="h-4 w-4 shrink-0 mt-0.5 text-amber-500" />
-                                          {tip}
-                                        </li>
-                                      ))}
-                                    </ul>
-                                  </div>
-                                )}
-
-                                {step.warning && (
-                                  <div className="bg-red-50/50 dark:bg-red-900/20 rounded-lg p-4 border border-red-100 dark:border-red-900/50">
-                                    <div className="flex gap-3">
-                                      <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400 shrink-0" />
-                                      <p className="text-sm text-red-800 dark:text-red-200">{step.warning}</p>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Screenshots if available */}
-                        {step.images && step.images.length > 0 && (
-                          <div className="space-y-6">
-                            {step.images.map((image, imageIndex) => (
-                              <div
-                                key={imageIndex}
-                                className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] w-full md:w-3/4 lg:w-2/3 mx-auto">
-                                  <img
-                                  src={image}
-                                  alt={`${step.title} Interface ${step.images.length > 1 ? `(${imageIndex + 1}/${step.images.length})` : ''}`}
-                                  className="w-full h-auto"
-                                />
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </AccordionContent>
-                </div>
-              </AccordionItem>
+          {/* Step Navigation */}
+          <div className="grid grid-cols-2 md:grid-cols-6 gap-2 mb-8">
+            {processSteps.map((step) => (
+              <Button
+                key={step.step}
+                variant={activeStep === step.step ? "default" : "outline"}
+                size="sm"
+                onClick={() => setActiveStep(step.step)}
+                className="flex items-center gap-2"
+              >
+                <step.icon className="h-4 w-4" />
+                <span className="hidden sm:inline">Step {step.step}</span>
+                <span className="sm:hidden">{step.step}</span>
+              </Button>
             ))}
-          </Accordion>
-        </div>
+          </div>
 
-        {/* Critical Reminders */}
-        <Card className="mt-8 border-red-100 dark:border-red-900 bg-gradient-to-br from-red-50 to-slate-50 dark:from-red-900/20 dark:to-slate-900">
-          <CardHeader>
-            <CardTitle className="text-xl text-red-900 dark:text-red-300 flex items-center gap-2">
-              <AlertCircle className="h-5 w-5" />
-              Critical Process Reminders
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid gap-4 md:grid-cols-2">
-              <div className="p-4 rounded-xl border border-red-100 dark:border-red-900/50 bg-white/80 dark:bg-slate-900/50">
-                <h4 className="font-medium text-red-900 dark:text-red-300 mb-3">Process Integrity</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-sm text-red-700 dark:text-red-400">
-                    <X className="h-4 w-4 shrink-0 mt-0.5" />
-                    Never skip steps or alter sequence
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-red-700 dark:text-red-400">
-                    <X className="h-4 w-4 shrink-0 mt-0.5" />
-                    Don't proceed with unresolved errors
-                  </li>
-                </ul>
-              </div>
+          {/* Active Step Content */}
+          {processSteps.map((step) => (
+            <div key={step.step} className={activeStep === step.step ? "block" : "hidden"}>
+              <Card className={step.isCritical ? "border-destructive/50" : ""}>
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                      <span className="text-xl font-bold text-primary-foreground">{step.step}</span>
+                    </div>
+                    <div className="flex-1">
+                      <CardTitle className="text-primary flex items-center gap-2">
+                        <step.icon className="h-5 w-5" />
+                        {step.title}
+                        {step.isCritical && (
+                          <Badge variant="destructive" className="text-xs">
+                            Critical
+                          </Badge>
+                        )}
+                      </CardTitle>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                </CardHeader>
 
-              <div className="p-4 rounded-xl border border-red-100 dark:border-red-900/50 bg-white/80 dark:bg-slate-900/50">
-                <h4 className="font-medium text-red-900 dark:text-red-300 mb-3">Data Safety</h4>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2 text-sm text-red-700 dark:text-red-400">
-                    <X className="h-4 w-4 shrink-0 mt-0.5" />
-                    No changes after final posting
-                  </li>
-                  <li className="flex items-start gap-2 text-sm text-red-700 dark:text-red-400">
-                    <X className="h-4 w-4 shrink-0 mt-0.5" />
-                    Whole Batch Reversals needed for corrections
-                  </li>
-                </ul>
-              </div>
+                <CardContent className="space-y-6">
+                  {/* Warning */}
+                  {step.warning && (
+                    <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-4">
+                      <div className="flex gap-3">
+                        <AlertCircle className="h-5 w-5 text-destructive flex-shrink-0" />
+                        <p className="text-sm text-destructive font-medium">{step.warning}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Complex Step with Scenarios - Fixed for Dark Mode */}
+                  {step.isComplex && step.scenarios ? (
+                    <div className="space-y-6">
+                      {step.scenarios.map((scenario, index) => (
+                        <Card
+                          key={index}
+                          className={
+                            scenario.type === "success"
+                              ? "border-green-200 dark:border-green-800 bg-green-50/50 dark:bg-green-900/20"
+                              : scenario.type === "warning"
+                                ? "border-amber-200 dark:border-amber-800 bg-amber-50/50 dark:bg-amber-900/20"
+                                : "border-red-200 dark:border-red-800 bg-red-50/50 dark:bg-red-900/20"
+                          }
+                        >
+                          <CardHeader>
+                            <CardTitle className="text-lg flex items-center gap-2">
+                              {scenario.type === "success" && (
+                                <CheckCircle className="h-5 w-5 text-green-600 dark:text-green-400" />
+                              )}
+                              {scenario.type === "warning" && (
+                                <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                              )}
+                              {scenario.type === "error" && (
+                                <AlertCircle className="h-5 w-5 text-red-600 dark:text-red-400" />
+                              )}
+                              <span
+                                className={
+                                  scenario.type === "success"
+                                    ? "text-green-800 dark:text-green-300"
+                                    : scenario.type === "warning"
+                                      ? "text-amber-800 dark:text-amber-300"
+                                      : "text-red-800 dark:text-red-300"
+                                }
+                              >
+                                {scenario.title}
+                              </span>
+                            </CardTitle>
+                          </CardHeader>
+                          <CardContent>
+                            <div className="space-y-3 mb-4">
+                              {scenario.steps.map((stepItem, stepIndex) => (
+                                <div key={stepIndex} className="flex items-start gap-3">
+                                  <div
+                                    className={
+                                      scenario.type === "success"
+                                        ? "w-6 h-6 rounded-full bg-green-100 dark:bg-green-800/50 flex items-center justify-center flex-shrink-0 mt-0.5"
+                                        : scenario.type === "warning"
+                                          ? "w-6 h-6 rounded-full bg-amber-100 dark:bg-amber-800/50 flex items-center justify-center flex-shrink-0 mt-0.5"
+                                          : "w-6 h-6 rounded-full bg-red-100 dark:bg-red-800/50 flex items-center justify-center flex-shrink-0 mt-0.5"
+                                    }
+                                  >
+                                    <span
+                                      className={
+                                        scenario.type === "success"
+                                          ? "text-xs font-medium text-green-800 dark:text-green-200"
+                                          : scenario.type === "warning"
+                                            ? "text-xs font-medium text-amber-800 dark:text-amber-200"
+                                            : "text-xs font-medium text-red-800 dark:text-red-200"
+                                      }
+                                    >
+                                      {stepIndex + 1}
+                                    </span>
+                                  </div>
+                                  <span
+                                    className={
+                                      scenario.type === "success"
+                                        ? "text-green-700 dark:text-green-200"
+                                        : scenario.type === "warning"
+                                          ? "text-amber-700 dark:text-amber-200"
+                                          : "text-red-700 dark:text-red-200"
+                                    }
+                                  >
+                                    {stepItem}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+
+                            {scenario.outcome && (
+                              <div className="pt-3 border-t border-current/20">
+                                <p
+                                  className={
+                                    scenario.type === "success"
+                                      ? "text-sm text-green-700 dark:text-green-200"
+                                      : scenario.type === "warning"
+                                        ? "text-sm text-amber-700 dark:text-amber-200"
+                                        : "text-sm text-red-700 dark:text-red-200"
+                                  }
+                                >
+                                  <span className="font-semibold">Outcome:</span> {scenario.outcome}
+                                </p>
+                              </div>
+                            )}
+
+                            {scenario.images && (
+                              <div className="mt-4 grid gap-4">
+                                {scenario.images.map((image, imageIndex) => (
+                                  <div
+                                    key={imageIndex}
+                                    className="border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+                                  >
+                                    <img
+                                      src={image || "/placeholder.svg"}
+                                      alt={`${scenario.title} - ${imageIndex + 1}`}
+                                      className="w-full object-contain"
+                                    />
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </CardContent>
+                        </Card>
+                      ))}
+                    </div>
+                  ) : (
+                    /* Regular Step Content */
+                    <div className="space-y-4">
+                      {step.content && (
+                        <div className="space-y-3">
+                          {step.content.map((item, index) => (
+                            <div key={index} className="flex items-start gap-3">
+                              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <ArrowRight className="h-3 w-3 text-primary" />
+                              </div>
+                              <span className="text-muted-foreground">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      {step.image && (
+                        <div className="border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+                          <img
+                            src={step.image || "/placeholder.svg"}
+                            alt={step.title}
+                            className="w-full object-contain"
+                          />
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Navigation */}
+                  <div className="flex justify-between pt-4 border-t">
+                    <Button
+                      variant="outline"
+                      onClick={() => setActiveStep(Math.max(1, activeStep - 1))}
+                      disabled={activeStep === 1}
+                    >
+                      Previous Step
+                    </Button>
+                    <Button
+                      onClick={() => setActiveStep(Math.min(6, activeStep + 1))}
+                      disabled={activeStep === 6}
+                      className="bg-primary hover:bg-primary/90"
+                    >
+                      Next Step
+                      <ArrowRight className="h-4 w-4 ml-2" />
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </div>
-          </CardContent>
-        </Card>
-      </div>
+          ))}
+        </TabsContent>
+      </Tabs>
     </div>
   )
 }

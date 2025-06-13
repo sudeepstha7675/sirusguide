@@ -1,96 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Albert+Sans:wght@300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 210 10% 23%;
+    /* SiriusApp Brand Colors - Light Mode */
+    --background: 220 33% 98%; /* #f8f9fc - Base Background */
+    --foreground: 0 0% 12%; /* #1e1e1e - Text color */
 
-    --card: 0 0% 100%;
-    --card-foreground: 210 10% 23%;
+    --card: 228 35% 96%; /* #f1f3f9 - Primary Background */
+    --card-foreground: 0 0% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 10% 23%;
+    --popover-foreground: 0 0% 12%;
 
-    --primary: 210 100% 45%; /* sirius.blue.DEFAULT */
+    --primary: 270 100% 20%; /* #330066 - Base/Primary Purple */
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 25 100% 55%; /* sirius.orange.DEFAULT */
+    --secondary: 320 100% 30%; /* #990066 - Primary Magenta */
     --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 25% 98%;
-    --muted-foreground: 210 9% 48%;
+    --muted: 228 35% 96%; /* #f1f3f9 */
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 260 70% 95%; /* sirius.purple.light */
-    --accent-foreground: 260 70% 40%; /* sirius.purple.dark */
+    --accent: 301 100% 64%; /* #FF49FC - Secondary Pink */
+    --accent-foreground: 270 100% 20%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 20% 90%;
-    --input: 210 20% 90%;
-    --ring: 210 100% 45%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 270 100% 20%; /* Primary Purple */
 
     --radius: 0.5rem;
 
-    /* Sidebar variables */
-    --sidebar-background: 210 25% 98%;
-    --sidebar-foreground: 210 10% 23%;
-    --sidebar-primary: 210 100% 45%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 100% 95%;
-    --sidebar-accent-foreground: 210 100% 35%;
-    --sidebar-border: 210 20% 90%;
-    --sidebar-ring: 210 100% 45%;
+    /* Enhanced Text Hierarchy - Light Mode */
+    --text-primary: 0 0% 12%; /* #1e1e1e - Main text */
+    --text-secondary: 0 0% 25%; /* #404040 - Secondary text */
+    --text-muted: 0 0% 45%; /* #737373 - Muted text */
+    --text-subtle: 0 0% 60%; /* #999999 - Subtle text */
+
+    /* Enhanced Color Hierarchy for Headers and Steps - CONTENT ONLY */
+    --content-header-primary: 270 100% 20%; /* Main page headers - Deep purple */
+    --content-header-secondary: 260 85% 35%; /* Section headers - Medium purple */
+    --content-header-tertiary: 250 75% 50%; /* Step titles - Lighter purple */
+    --content-step-number: 240 90% 65%; /* Step numbers - Light blue-purple */
+    --content-step-accent: 220 85% 70%; /* Step accents - Blue */
+
+    /* Chart colors using brand palette */
+    --chart-1: 320 100% 30%; /* Primary Magenta */
+    --chart-2: 270 100% 20%; /* Base Purple */
+    --chart-3: 301 100% 64%; /* Secondary Pink */
+    --chart-4: 180 100% 70%; /* Highlight Cyan */
+    --chart-5: 260 80% 40%; /* Additional purple shade */
+
+    /* Sidebar variables - UNCHANGED */
+    --sidebar-background: 270 100% 20%; /* Base Purple */
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 301 100% 64%; /* Secondary Pink */
+    --sidebar-primary-foreground: 270 100% 20%;
+    --sidebar-accent: 270 100% 25%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 270 100% 15%;
+    --sidebar-ring: 301 100% 64%;
   }
 
   .dark {
-    --background: 220 15% 8%;
-    --foreground: 210 20% 94%;
+    /* SiriusApp Brand Colors - Dark Mode - Optimized for Better Readability */
+    --background: 240 20% 10%; /* #14151f - Deeper blue-black background */
+    --foreground: 220 30% 95%; /* #edf0f7 - Slightly off-white for better eye comfort */
 
-    --card: 220 15% 12%;
-    --card-foreground: 210 20% 94%;
+    --card: 240 20% 13%; /* #1a1c29 - Slightly lighter than background */
+    --card-foreground: 220 30% 95%;
 
-    --popover: 220 15% 8%;
-    --popover-foreground: 210 20% 94%;
+    --popover: 240 20% 13%;
+    --popover-foreground: 220 30% 95%;
 
-    --primary: 210 100% 55%; /* Lighter blue for dark mode */
-    --primary-foreground: 0 0% 100%;
+    /* FIXED: Changed from bright pink to readable purple-blue */
+    --primary: 250 85% 70%; /* #A78BFA - Soft purple-blue, much more readable */
+    --primary-foreground: 240 20% 10%; /* Dark background for contrast */
 
-    --secondary: 25 100% 65%; /* Lighter orange for dark mode */
-    --secondary-foreground: 0 0% 0%;
+    --secondary: 180 90% 65%; /* #5aeaea - Slightly muted cyan for better harmony */
+    --secondary-foreground: 240 20% 10%;
 
-    --muted: 220 15% 18%;
-    --muted-foreground: 210 15% 65%;
+    --muted: 240 20% 18%; /* #23263a - Subtle elevation for muted elements */
+    --muted-foreground: 220 20% 70%; /* #a9b3cc - Softer text for muted content */
 
-    --accent: 260 70% 20%;
-    --accent-foreground: 260 70% 85%;
+    /* FIXED: Changed accent to softer purple */
+    --accent: 260 75% 65%; /* #9F7AEA - Softer purple accent */
+    --accent-foreground: 220 30% 95%;
 
-    --destructive: 0 70% 50%;
-    --destructive-foreground: 0 0% 100%;
+    --destructive: 0 80% 50%; /* #f44 - More visible destructive action */
+    --destructive-foreground: 220 30% 95%;
 
-    --border: 220 15% 22%;
-    --input: 220 15% 22%;
-    --ring: 210 100% 55%;
+    --border: 240 20% 20%; /* #2a2d45 - Subtle borders */
+    --input: 240 20% 20%;
+    /* FIXED: Changed ring to match new primary */
+    --ring: 250 85% 70%; /* Match new primary color */
 
-    /* Sidebar variables for dark mode */
-    --sidebar-background: 220 15% 8%;
-    --sidebar-foreground: 210 20% 94%;
-    --sidebar-primary: 210 100% 55%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 15% 18%;
-    --sidebar-accent-foreground: 210 20% 94%;
-    --sidebar-border: 220 15% 22%;
-    --sidebar-ring: 210 100% 55%;
+    /* Enhanced Text Hierarchy - Dark Mode */
+    --text-primary: 220 30% 95%; /* #edf0f7 - Main text */
+    --text-secondary: 220 25% 85%; /* #d1d9e6 - Secondary text */
+    --text-muted: 220 20% 70%; /* #a9b3cc - Muted text */
+    --text-subtle: 220 15% 55%; /* #8892a6 - Subtle text */
+
+    /* Enhanced Color Hierarchy for Headers and Steps - CONTENT ONLY - Dark Mode */
+    --content-header-primary: 250 85% 70%; /* Main page headers - Bright readable purple */
+    --content-header-secondary: 240 80% 75%; /* Section headers - Light blue-purple */
+    --content-header-tertiary: 220 75% 80%; /* Step titles - Lighter blue */
+    --content-step-number: 200 85% 75%; /* Step numbers - Light cyan-blue */
+    --content-step-accent: 180 80% 70%; /* Step accents - Cyan */
+
+    /* Chart colors for dark mode - Enhanced for better distinction */
+    --chart-1: 250 85% 70%; /* New readable purple */
+    --chart-2: 180 90% 65%; /* #5aeaea - Adjusted Cyan */
+    --chart-3: 260 75% 65%; /* Softer purple */
+    --chart-4: 270 80% 55%; /* #8855ee - Vibrant Purple */
+    --chart-5: 220 90% 65%; /* #5580ff - Bright Blue */
+
+    /* Sidebar variables for dark mode - UNCHANGED */
+    --sidebar-background: 240 25% 8%; /* #10111a - Darker than main background */
+    --sidebar-foreground: 220 30% 95%;
+    --sidebar-primary: 250 85% 70%;
+    --sidebar-primary-foreground: 240 20% 10%;
+    --sidebar-accent: 240 20% 15%; /* #1d1f33 - Subtle accent */
+    --sidebar-accent-foreground: 220 30% 95%;
+    --sidebar-border: 240 20% 15%;
+    --sidebar-ring: 250 85% 70%;
   }
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-[hsl(var(--border))];
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-sans;
+  }
+
+  /* Typography hierarchy - UNCHANGED for sidebar compatibility */
+  h1 {
+    @apply text-5xl font-black; /* 50pt */
+  }
+
+  h2 {
+    @apply text-3xl font-bold; /* 32pt */
+  }
+
+  h3 {
+    @apply text-2xl font-bold; /* 24pt */
+  }
+
+  h4,
+  .subtitle {
+    @apply text-lg font-bold; /* 18pt - subtitle */
+  }
+
+  p,
+  body {
+    @apply text-sm; /* 12pt - body text */
+  }
+}
+
+@layer components {
+  /* SCOPED CONTENT STYLES - Won't affect sidebar */
+  .content-area h1 {
+    color: hsl(var(--content-header-primary));
+  }
+
+  .content-area h2 {
+    color: hsl(var(--content-header-secondary));
+  }
+
+  .content-area h3 {
+    color: hsl(var(--content-header-tertiary));
+  }
+
+  .content-area a {
+    color: hsl(var(--content-step-accent));
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+  }
+
+  .content-area a:hover {
+    color: hsl(var(--content-header-tertiary));
+    text-decoration: underline;
+  }
+
+  /* Step number styling - SCOPED */
+  .content-area .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.75rem;
+    width: 1.75rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 9999px;
+    flex-shrink: 0;
+  }
+
+  .content-area .step-number-primary {
+    background-color: hsl(var(--content-step-number));
+    color: hsl(240, 20%, 10%);
+  }
+
+  .content-area .step-number-secondary {
+    background-color: hsl(var(--content-step-accent));
+    color: hsl(240, 20%, 10%);
+  }
+
+  /* Step title styling - SCOPED */
+  .content-area .step-title {
+    color: hsl(var(--content-header-tertiary));
+    font-weight: 600;
+  }
+
+  /* Section header styling - SCOPED */
+  .content-area .section-header {
+    color: hsl(var(--content-header-secondary));
+    font-weight: 700;
+  }
+
+  /* Page header styling - SCOPED */
+  .content-area .page-header {
+    color: hsl(var(--content-header-primary));
+    font-weight: 800;
+  }
+}
+
+@layer utilities {
+  /* Brand-specific utility classes - UNCHANGED */
+  .text-sirius-base {
+    color: hsl(270, 100%, 20%);
+  }
+  .dark .text-sirius-base {
+    color: hsl(250, 85%, 70%);
+  }
+
+  .text-sirius-primary {
+    color: hsl(320, 100%, 30%);
+  }
+  .dark .text-sirius-primary {
+    color: hsl(250, 85%, 70%);
+  }
+
+  .text-sirius-secondary {
+    color: hsl(301, 100%, 64%);
+  }
+  .dark .text-sirius-secondary {
+    color: hsl(260, 75%, 65%);
+  }
+
+  .text-sirius-highlight {
+    color: hsl(180, 100%, 70%);
+  }
+  .dark .text-sirius-highlight {
+    color: hsl(180, 90%, 65%);
+  }
+
+  .bg-sirius-base {
+    background-color: hsl(270, 100%, 20%);
+  }
+  .dark .bg-sirius-base {
+    background-color: hsl(250, 85%, 70%);
+  }
+
+  .bg-sirius-primary {
+    background-color: hsl(320, 100%, 30%);
+  }
+  .dark .bg-sirius-primary {
+    background-color: hsl(250, 85%, 70%);
+  }
+
+  .bg-sirius-secondary {
+    background-color: hsl(301, 100%, 64%);
+  }
+  .dark .bg-sirius-secondary {
+    background-color: hsl(260, 75%, 65%);
+  }
+
+  .bg-sirius-highlight {
+    background-color: hsl(180, 100%, 70%);
+  }
+  .dark .bg-sirius-highlight {
+    background-color: hsl(180, 90%, 65%);
+  }
+
+  /* SCOPED content color utilities - Won't affect sidebar */
+  .text-content-header-primary {
+    color: hsl(var(--content-header-primary));
+  }
+
+  .text-content-header-secondary {
+    color: hsl(var(--content-header-secondary));
+  }
+
+  .text-content-header-tertiary {
+    color: hsl(var(--content-header-tertiary));
+  }
+
+  .text-content-step-number {
+    color: hsl(var(--content-step-number));
+  }
+
+  .text-content-step-accent {
+    color: hsl(var(--content-step-accent));
+  }
+
+  .bg-content-step-number {
+    background-color: hsl(var(--content-step-number));
+  }
+
+  .bg-content-step-accent {
+    background-color: hsl(var(--content-step-accent));
+  }
+
+  /* Gradient patterns from brand - UNCHANGED */
+  .bg-sirius-gradient {
+    background: linear-gradient(135deg, hsl(270, 100%, 20%) 0%, hsl(320, 100%, 30%) 50%, hsl(301, 100%, 64%) 100%);
+  }
+
+  /* Dark mode specific gradients - UNCHANGED */
+  .dark .bg-sirius-gradient {
+    background: linear-gradient(135deg, hsl(250, 85%, 70%) 0%, hsl(260, 75%, 65%) 50%, hsl(270, 70%, 60%) 100%);
+  }
+
+  .dark .bg-sirius-dark-gradient {
+    background: linear-gradient(135deg, hsl(250, 85%, 70%) 0%, hsl(260, 75%, 65%) 100%);
+  }
+
+  /* Dark mode glow effects - UNCHANGED */
+  .dark .shadow-sirius-glow {
+    box-shadow: 0 4px 20px -2px rgba(167, 139, 250, 0.25);
+  }
+
+  /* Dark mode card hover states - UNCHANGED */
+  .dark .card:hover {
+    background-color: hsl(240, 20%, 15%);
+    border-color: hsla(250, 85%, 70%, 0.3);
   }
 }

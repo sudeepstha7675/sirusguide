@@ -28,6 +28,11 @@ import {
   CloudCog,
   PlayCircle,
   BarChart3,
+  BookOpen,
+  Compass,
+  Rocket,
+  Download,
+  Key
 } from "lucide-react"
 
 export interface NavItem {
@@ -40,6 +45,46 @@ export interface NavItem {
 }
 
 export const sidebarNavItems: NavItem[] = [
+   {
+    title: "Introduction",
+    href: "/introduction",
+    icon: BookOpen, // Changed to BookOpen - represents documentation/guide
+    keywords: ["introduction", "guide", "overview"],
+    items: [
+      {
+        title: "Overview",
+        href: "/introduction/overview",
+        icon: Compass, // Changed to Compass - represents navigation/overview
+        keywords: ["overview", "summary", "introduction"],
+      },
+    ],
+  },
+  {
+    title: "Getting Started",
+    href: "/getting-started",
+    icon: Rocket, // Changed to Rocket - represents launch/starting point
+    keywords: ["configuration", "initial setup"],
+    items: [
+      {
+        title: "Installation",
+        href: "/getting-started/installation",
+        icon: Download, // Changed from Settings2 to Download - more intuitive for installation
+        keywords: ["main settings", "core payroll config"],
+      },
+      {
+        title: "Initial Configuration",
+        href: "/getting-started/configuration",
+        icon: Settings2,
+        keywords: ["setup", "activation"],
+      },
+      {
+        title: "Activation & Licensing",
+        href: "/getting-started/activation-licensing",
+        icon: Key, // Changed from DollarSign to Key - better represents activation/licensing
+        keywords: ["earnings", "deductions", "basic pay", "bonus", "allowance"],
+      },
+    ],
+  },
    {
     title: "Payroll Setup",
     href: "/payroll-setup",
@@ -129,7 +174,7 @@ export const sidebarNavItems: NavItem[] = [
         keywords: ["payment details", "employee bank"],
       },
       {
-        title: "HMRC Updates (Employee)",
+        title: "HMRC Updates-Employee",
         href: "/employees/hmrc-updates-employee", // Part of an employee's record or a general log
         icon: CloudUpload,
         keywords: ["tax code changes", "p6", "p9", "rti"],

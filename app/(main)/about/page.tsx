@@ -1,115 +1,137 @@
-// Create this new page for company details
-import { Card, CardContent, CardDescription, CardHeader } from "@/components/ui/card"
+"use client"
+
 import Image from "next/image"
 import { Building, Mail, Phone, Globe, Info, Users, MapPin } from "lucide-react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 
 export default function AboutPage() {
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6 max-w-4xl">
-      <Card className="shadow-xl">
-        <CardHeader className="text-center border-b pb-6">
-          <div className="flex justify-center mb-4">
-            <Image
-              src="/sirius.svg"
-              alt="SiriusApp Logo"
-              width={80}
-              height={80}
-              className="rounded-lg" // Removed specific background
-            />
+    <div className="container mx-auto py-8 px-4 md:px-6">
+      <div className="space-y-6">
+        {/* Enhanced Header - Matching Reports Page */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md transition-all duration-300 group-hover:bg-primary/40 group-hover:blur-lg" />
+            <div className="relative w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-primary/25">
+              <Info className="h-6 w-6 text-primary-foreground drop-shadow-sm group-hover:rotate-12 transition-transform duration-300" />
+            </div>
           </div>
-          <h1 className="text-4xl font-bold">
-            <span className="text-primary dark:text-primary-foreground">About Sirius Payroll 365</span>
-          </h1>
-          <CardDescription className="text-lg mt-2 text-muted-foreground">
-            Automating payroll, reducing errors, and ensuring HMRC compliance.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="pt-8 space-y-8">
-          <section>
-            <h2 className="text-2xl font-semibold text-primary dark:text-primary-foreground mb-3 flex items-center">
-              <Info className="mr-2 h-6 w-6" /> Our Mission
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              SiriusPayroll365 is an ERP payroll solution designed to automate manual paperwork and significantly reduce
-              human errors. We empower users to efficiently process payments related to pensions, overtime, sickness,
-              contracted hours, insurance, maternity & paternity, and much more. Our system ensures that users submit
-              the correct data to HMRC, meet Real Time Information (RTI) requirements, avoid common pitfalls, and
-              effectively manage pending payments.
+          <div>
+            <h1 className="text-3xl font-black text-primary">About Sirius Payroll 365</h1>
+            <p className="text-lg text-muted-foreground mt-1">
+              Automating payroll, reducing errors, and ensuring HMRC compliance.
             </p>
-          </section>
+          </div>
+        </div>
 
-          <section>
-            <h2 className="text-2xl font-semibold text-primary dark:text-primary-foreground mb-4 flex items-center">
-              <Users className="mr-2 h-6 w-6" /> Part of the Dogma Group
-            </h2>
-            <div className="flex items-center gap-4 p-4 border rounded-lg bg-muted/30">
-              <Image
-                src="/dogma.svg" // REMINDER: Replace
-                alt="Dogma Group Logo"
-                width={60}
-                height={60}
-                className="rounded-md"
-              />
-              <div>
-                <p className="text-muted-foreground leading-relaxed">
-                  Sirius App is a proud company under the{" "}
-                  <strong className="text-foreground">Dogma Group Limited</strong>.
+        {/* Mission Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-primary mb-4 flex items-center">
+            <div className="p-2 rounded-lg bg-primary/10 mr-2">
+              <Info className="h-5 w-5 text-primary" />
+            </div>
+            Our Mission
+          </h2>
+          <Alert className="mb-6 bg-primary/5 border-primary/20">
+            <Info className="h-5 w-5 text-primary" />
+            <AlertDescription className="ml-2 text-base">
+              SiriusPayroll365 is an ERP payroll solution designed to automate manual paperwork and significantly reduce
+              human errors.
+            </AlertDescription>
+          </Alert>
+          <p className="text-muted-foreground leading-relaxed">
+            We empower users to efficiently process payments related to pensions, overtime, sickness, contracted hours,
+            insurance, maternity & paternity, and much more. Our system ensures that users submit the correct data to
+            HMRC, meet Real Time Information (RTI) requirements, avoid common pitfalls, and effectively manage pending
+            payments.
+          </p>
+        </div>
+
+        {/* Dogma Group Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-primary mb-4 flex items-center">
+            <div className="p-2 rounded-lg bg-primary/10 mr-2">
+              <Users className="h-5 w-5 text-primary" />
+            </div>
+            Part of the Dogma Group
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-4">
+            <div className="col-span-1 flex justify-center items-center bg-muted/30 p-6 rounded-lg border">
+              <Image src="/sirius.svg" alt="SiriusApp Logo" width={120} height={120} className="rounded-lg" />
+            </div>
+            <div className="col-span-2 space-y-4">
+              <p className="text-muted-foreground leading-relaxed">
+                Sirius App is a proud company under the <strong className="text-foreground">Dogma Group Limited</strong>
+                . We combine industry expertise with innovative technology to deliver exceptional payroll solutions.
+              </p>
+              <div className="p-4 border rounded-lg bg-muted/30">
+                <p className="text-sm text-muted-foreground">
+                  <strong>Registered at:</strong> 6 Portal Business Park, Suite 3 & 4, Eaton Lane, Tarporley, CW6 9DL
                 </p>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Registered at: 6 Portal Business Park, Suite 3 & 4, Eaton Lane, Tarporley, CW6 9DL
+                <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+                  <p className="text-muted-foreground">
+                    <strong>VAT Registration No:</strong> 330460638
+                  </p>
+                  <p className="text-muted-foreground">
+                    <strong>Company No:</strong> 12096627
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact Information Section */}
+        <div className="mb-8">
+          <h2 className="text-2xl font-semibold text-primary mb-4 flex items-center">
+            <div className="p-2 rounded-lg bg-primary/10 mr-2">
+              <Building className="h-5 w-5 text-primary" />
+            </div>
+            Contact Information
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4 p-6 border rounded-lg bg-muted/10 hover:bg-muted/20 transition-colors">
+              <h3 className="text-lg font-medium text-primary">Get in Touch</h3>
+              <div className="space-y-3 text-muted-foreground">
+                <p className="flex items-center">
+                  <Phone className="mr-3 h-5 w-5 text-primary" />
+                  <a href="tel:01296328689" className="hover:text-primary transition-colors">
+                    01296 328689
+                  </a>
+                </p>
+                <p className="flex items-center">
+                  <Mail className="mr-3 h-5 w-5 text-primary" />
+                  <a href="mailto:info@siriusapp.co.uk" className="hover:text-primary transition-colors">
+                    info@siriusapp.co.uk
+                  </a>
+                </p>
+                <p className="flex items-center">
+                  <Globe className="mr-3 h-5 w-5 text-primary" />
+                  <a
+                    href="https://www.siriusapp.co.uk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-primary transition-colors"
+                  >
+                    www.siriusapp.co.uk
+                  </a>
                 </p>
               </div>
             </div>
-            <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
-              <p className="text-muted-foreground">
-                <strong>VAT Registration No:</strong> 330460638
-              </p>
-              <p className="text-muted-foreground">
-                <strong>Company No:</strong> 12096627
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-2xl font-semibold text-primary dark:text-primary-foreground mb-3 flex items-center">
-              <Building className="mr-2 h-6 w-6" /> Contact Information
-            </h2>
-            <div className="space-y-3 text-muted-foreground">
-              <p className="flex items-center">
-                <Phone className="mr-3 h-5 w-5 text-secondary" />
-                <a href="tel:01296328689" className="hover:text-secondary transition-colors">
-                  01296 328689
-                </a>
-              </p>
-              <p className="flex items-center">
-                <Mail className="mr-3 h-5 w-5 text-secondary" />
-                <a href="mailto:info@siriusapp.co.uk" className="hover:text-secondary transition-colors">
-                  info@siriusapp.co.uk
-                </a>
-              </p>
-              <p className="flex items-center">
-                <Globe className="mr-3 h-5 w-5 text-secondary" />
-                <a
-                  href="https://www.siriusapp.co.uk"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-secondary transition-colors"
-                >
-                  www.siriusapp.co.uk
-                </a>
-              </p>
+            <div className="space-y-4 p-6 border rounded-lg bg-muted/10 hover:bg-muted/20 transition-colors">
+              <h3 className="text-lg font-medium text-primary">London Office</h3>
               <p className="flex items-start">
-                <MapPin className="mr-3 h-5 w-5 text-secondary mt-1 flex-shrink-0" />
-                <span>
+                <MapPin className="mr-3 h-5 w-5 text-primary mt-1 flex-shrink-0" />
+                <span className="text-muted-foreground">
                   Sirius App (London Office):
                   <br />
                   483 Green Lanes, London, N13 4BS
                 </span>
               </p>
             </div>
-          </section>
-        </CardContent>
-      </Card>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

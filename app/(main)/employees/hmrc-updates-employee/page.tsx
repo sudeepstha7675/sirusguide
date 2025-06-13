@@ -1,228 +1,203 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { CloudUpload, RefreshCcw, FileCheck, FileText, Info, AlertTriangle } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
-import { CloudUpload, Search, AlertCircle, RefreshCcw, FileCheck, FileText } from "lucide-react"
 
 export default function HmrcUpdatesEmployeePage() {
   return (
     <div className="container mx-auto py-8 px-4 md:px-6">
-      <div className="mb-8">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-12 h-12 bg-sirius-purple rounded-lg flex items-center justify-center">
-            <CloudUpload className="h-6 w-6 text-white" />
+      <div className="space-y-6">
+        {/* Enhanced Header */}
+        <div className="flex items-center gap-3 mb-6">
+          <div className="relative group">
+            <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md transition-all duration-300 group-hover:bg-primary/40 group-hover:blur-lg" />
+            <div className="relative w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-primary/25">
+              <CloudUpload className="h-6 w-6 text-primary-foreground drop-shadow-sm group-hover:rotate-12 transition-transform duration-300" />
+            </div>
           </div>
           <div>
-            <h1 className="text-4xl font-bold text-primary">HMRC Updates</h1>
-            <p className="text-muted-foreground text-lg mt-1">
-              View and manage HMRC document updates and tax code changes
+            <h1 className="text-3xl font-black text-primary">HMRC Updates</h1>
+            <p className="text-lg text-muted-foreground mt-1">
+              View and manage HMRC document updates and tax code changes.
             </p>
           </div>
         </div>
 
-        <p className="text-muted-foreground mb-6 text-lg">
-          Track and apply HMRC updates including tax code changes, previous tax paid information,
-          and student loan updates from official HMRC documents.
-        </p>
+        {/* Enhanced Alert */}
+        <Alert className="mb-6 bg-primary/5 border-primary/20">
+          <Info className="h-5 w-5 text-primary" />
+          <AlertDescription className="ml-2 text-base">
+            Track and apply HMRC updates including tax code changes, previous tax paid information, and student loan
+            updates from official HMRC documents.
+          </AlertDescription>
+        </Alert>
 
-        {/* Important Notice Box */}
-        <div className="mb-8 p-4 rounded-lg bg-amber-50 dark:bg-amber-950/20 border-l-4 border-amber-500">
-          <div className="flex gap-2">
-            <AlertCircle className="h-5 w-5 text-amber-500 flex-shrink-0 mt-0.5" />
-            <div>
-              <span className="font-semibold text-amber-700 dark:text-amber-400 block mb-1">Important:</span>
-              <span className="text-amber-700 dark:text-amber-400">
-                Users must have valid HMRC Employer Gateway ID and Password to fetch latest updates.
-                It is recommended to apply HMRC updates before making any changes.
-              </span>
-            </div>
-          </div>
-        </div>
+        {/* Important Notice */}
+        <Alert className="mb-6 bg-amber-50 border-amber-200">
+          <AlertTriangle className="h-5 w-5 text-amber-600" />
+          <AlertDescription className="ml-2 text-base text-amber-800">
+            <span className="font-semibold">Important:</span> Users must have valid HMRC Employer Gateway ID and
+            Password to fetch latest updates. It is recommended to apply HMRC updates before making any changes.
+          </AlertDescription>
+        </Alert>
 
-        {/* Step box container */}
-        <div className="bg-muted/50 p-6 rounded-lg border mb-6">
-          <div className="space-y-4">
-            <div className="flex items-start gap-2">
-              <span className="step-number2 bg-sirius-blue text-white">1</span>
-              <p className="text-muted-foreground">
-                Search for <span className="font-semibold text-primary">"HMRC Updates"</span> in the BC search icon, or
-              </p>
-            </div>
-            <div className="flex items-start gap-2">
-              <span className="step-number2 bg-sirius-blue text-white">2</span>
-              <p className="text-muted-foreground">
-                Navigate to{" "}
-                <span className="font-semibold text-primary">
-                  Employees → HMRC Updates
-                </span>
-              </p>
-            </div>
-          </div>
+        {/* Setup Steps Card */}
+        <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+          <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
+            <CardTitle className="flex items-center gap-3 text-xl text-primary">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <Info className="h-5 w-5 text-primary" />
+              </div>
+              Setup Steps
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="p-6 space-y-6">
+            <div className="space-y-4">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                  1
+                </div>
+                <p className="text-muted-foreground pt-1">
+                  Search for <span className="font-bold text-primary">"HMRC Updates"</span> in the BC search icon, or
+                </p>
+              </div>
 
-          <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
-            <img
-              src="/HMRCUpdate1.png"
-              alt="Step by Step guide to Bank Account Setup"
-              className="w-full object-contain"
-            />
-          </div>
-        </div>
-
-        {/* HMRC Document Types */}
-        <Card className="border-2">
-          <CardHeader>
-            <div className="flex flex-col gap-4">
-              <div>
-                <CardTitle className="text-2xl text-primary">Available HMRC Documents</CardTitle>
-                <p className="text-muted-foreground mt-2">
-                  Overview of HMRC documents and updates in Sirius 365
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold">
+                  2
+                </div>
+                <p className="text-muted-foreground pt-1">
+                  Navigate to <span className="font-bold text-primary">Employees → HMRC Updates</span>.
                 </p>
               </div>
             </div>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="bg-gradient-to-br from-sirius-blue/10 to-sirius-blue/5 border border-sirius-blue/20 hover:border-sirius-blue/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-primary flex items-center gap-2">
-                    <Badge variant="default" className="bg-sirius-blue text-white">P6</Badge>
-                    <span className="dark:text-white text-primary">Tax Code Notice</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Official HMRC notices for employee tax code changes and updates.
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    View and apply new tax codes from P6 documents.
-                  </p>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-gradient-to-br from-sirius-green/10 to-sirius-green/5 border border-sirius-green/20 hover:border-sirius-green/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-primary flex items-center gap-2">
-                    <Badge variant="default" className="bg-sirius-green text-white">P9</Badge>
-                    <span className="dark:text-white text-primary">Tax Code Update</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Annual coding notices with updated tax codes for new tax year.
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Process P9 updates for tax year transitions.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-sirius-orange/10 to-sirius-orange/5 border border-sirius-orange/20 hover:border-sirius-orange/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-primary flex items-center gap-2">
-                    <Badge variant="default" className="bg-sirius-orange text-white">RTI</Badge>
-                    <span className="dark:text-white text-primary">Real Time Information</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Real-time PAYE information including National Insurance Number Details.
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Review and apply RTI updates for accurate payroll processing.
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-gradient-to-br from-sirius-purple/10 to-sirius-purple/5 border border-sirius-purple/20 hover:border-sirius-purple/40 transition-all">
-                <CardHeader>
-                  <CardTitle className="text-xl text-primary flex items-center gap-2">
-                    <Badge variant="default" className="bg-sirius-purple text-white">SL1/SL2/PG1/PG2</Badge>
-                    <span className="dark:text-white text-primary">Student Loan Notices</span>
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <p className="text-sm text-muted-foreground">
-                    Student loan start and stop notices from HMRC.
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Manage student loan deductions based on HMRC notices.
-                  </p>
-                </CardContent>
-              </Card>
+            <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+              <img
+                src="/HMRCUpdate1.png"
+                alt="Step by Step guide to HMRC Updates Setup"
+                className="w-full object-contain"
+              />
             </div>
           </CardContent>
         </Card>
 
-        {/* HMRC Updates Management */}
-        <Card className="mt-8 mb-8">
-          <CardHeader>
-            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-              <div>
-                <CardTitle className="text-2xl">HMRC Updates Management</CardTitle>
-                <p className="text-muted-foreground mt-2">
-                  Fetch and apply HMRC updates efficiently
-                </p>
+        {/* Available HMRC Documents Card */}
+        <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+          <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
+            <CardTitle className="flex items-center gap-3 text-xl text-primary">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <CloudUpload className="h-5 w-5 text-primary" />
+              </div>
+              Available HMRC Documents
+            </CardTitle>
+            <p className="text-muted-foreground mt-2">Overview of HMRC documents and updates in Sirius 365</p>
+          </CardHeader>
+          <CardContent className="p-6 space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="border border-border/50 rounded-lg p-4 bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200">
+                <div className="flex items-center gap-3 mb-3">
+                  <Badge className="bg-blue-600 text-white">P6</Badge>
+                  <h3 className="font-semibold text-lg text-foreground">Tax Code Notice</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Official HMRC notices for employee tax code changes and updates.
+                  </p>
+                  <p className="text-sm text-muted-foreground">View and apply new tax codes from P6 documents.</p>
+                </div>
+              </div>
+
+              <div className="border border-border/50 rounded-lg p-4 bg-gradient-to-br from-green-50 to-green-100/50 border-green-200">
+                <div className="flex items-center gap-3 mb-3">
+                  <Badge className="bg-green-600 text-white">P9</Badge>
+                  <h3 className="font-semibold text-lg text-foreground">Tax Code Update</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Annual coding notices with updated tax codes for new tax year.
+                  </p>
+                  <p className="text-sm text-muted-foreground">Process P9 updates for tax year transitions.</p>
+                </div>
+              </div>
+
+              <div className="border border-border/50 rounded-lg p-4 bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200">
+                <div className="flex items-center gap-3 mb-3">
+                  <Badge className="bg-orange-500 text-white">RTI</Badge>
+                  <h3 className="font-semibold text-lg text-foreground">Real Time Information</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">
+                    Real-time PAYE information including National Insurance Number Details.
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Review and apply RTI updates for accurate payroll processing.
+                  </p>
+                </div>
+              </div>
+
+              <div className="border border-border/50 rounded-lg p-4 bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200">
+                <div className="flex items-center gap-3 mb-3">
+                  <Badge className="bg-purple-600 text-white">SL1/SL2/PG1/PG2</Badge>
+                  <h3 className="font-semibold text-lg text-foreground">Student Loan Notices</h3>
+                </div>
+                <div className="space-y-2">
+                  <p className="text-sm text-muted-foreground">Student loan start and stop notices from HMRC.</p>
+                  <p className="text-sm text-muted-foreground">Manage student loan deductions based on HMRC notices.</p>
+                </div>
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* HMRC Updates Management Card */}
+        <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+          <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
+            <CardTitle className="flex items-center gap-3 text-xl text-primary">
+              <div className="p-2 rounded-lg bg-primary/10">
+                <CloudUpload className="h-5 w-5 text-primary" />
+              </div>
+              HMRC Updates Management
+            </CardTitle>
+            <p className="text-muted-foreground mt-2">Available functions for managing HMRC updates</p>
           </CardHeader>
-          <CardContent>
+          <CardContent className="p-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="bg-gradient-to-br from-sirius-blue/10 to-sirius-blue/5 border border-sirius-blue/20 hover:border-sirius-blue/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="w-10 h-10 rounded-lg bg-sirius-blue flex items-center justify-center mb-4">
-                    <RefreshCcw className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Fetch Updates</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Retrieve latest updates from HMRC using Gateway credentials.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="border border-border/50 rounded-lg p-6 bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200">
+                <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center mb-4">
+                  <RefreshCcw className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">Fetch Updates</h3>
+                <p className="text-muted-foreground text-sm">
+                  Function to retrieve latest updates from HMRC using Gateway credentials.
+                </p>
+              </div>
 
-              <Card className="bg-gradient-to-br from-sirius-green/10 to-sirius-green/5 border border-sirius-green/20 hover:border-sirius-green/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="w-10 h-10 rounded-lg bg-sirius-green flex items-center justify-center mb-4">
-                    <FileCheck className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">Apply Updates</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Review and apply pending HMRC updates to employee records.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="border border-border/50 rounded-lg p-6 bg-gradient-to-br from-green-50 to-green-100/50 border-green-200">
+                <div className="w-10 h-10 rounded-lg bg-green-600 flex items-center justify-center mb-4">
+                  <FileCheck className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">Apply Updates</h3>
+                <p className="text-muted-foreground text-sm">
+                  Feature to review and apply pending HMRC updates to employee records.
+                </p>
+              </div>
 
-              <Card className="bg-gradient-to-br from-sirius-orange/10 to-sirius-orange/5 border border-sirius-orange/20 hover:border-sirius-orange/40 transition-all">
-                <CardContent className="p-6">
-                  <div className="w-10 h-10 rounded-lg bg-sirius-orange flex items-center justify-center mb-4">
-                    <FileText className="h-5 w-5 text-white" />
-                  </div>
-                  <h3 className="font-semibold text-lg mb-2">View History</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Access complete history of HMRC updates and changes.
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="border border-border/50 rounded-lg p-6 bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200">
+                <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center mb-4">
+                  <FileText className="h-5 w-5 text-white" />
+                </div>
+                <h3 className="font-semibold text-lg mb-2 text-foreground">View History</h3>
+                <p className="text-muted-foreground text-sm">
+                  Option to access complete history of HMRC updates and changes.
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
       </div>
-
-      <style jsx>{`
-        .step-number2 {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          height: 1.75rem;
-          width: 1.75rem;
-          font-size: 0.875rem;
-          font-weight: 600;
-          border-radius: 9999px;
-          flex-shrink: 0;
-        }
-      `}</style>
     </div>
   )
 }

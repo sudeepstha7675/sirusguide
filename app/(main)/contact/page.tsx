@@ -1,98 +1,133 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Phone, Mail, MapPin, Building } from "lucide-react"
+"use client"
+import { Phone, Mail, MapPin, Globe } from "lucide-react"
 
 export default function ContactPage() {
   return (
-    <div className="container mx-auto py-8 px-4 md:px-6">
-      <Card className="max-w-4xl mx-auto">
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-bold text-primary dark:text-primary-foreground">
-            Contact Sirius Payroll 365
-          </CardTitle>
-          <CardDescription className="text-lg">
-            We&apos;re here to help. Reach out to us with any questions or concerns.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="grid md:grid-cols-2 gap-8 pt-6">
-          <div>
-            <h3 className="text-xl font-semibold mb-4 text-sirius-gray dark:text-sirius-gray-light">Get in Touch</h3>
-            <form className="space-y-4">
-              <div>
-                <Label htmlFor="name">Full Name</Label>
-                <Input id="name" placeholder="John Doe" />
-              </div>
-              <div>
-                <Label htmlFor="email">Email Address</Label>
-                <Input id="email" type="email" placeholder="john.doe@example.com" />
-              </div>
-              <div>
-                <Label htmlFor="subject">Subject</Label>
-                <Input id="subject" placeholder="e.g., Payroll Inquiry" />
-              </div>
-              <div>
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="Your message..." rows={5} />
-              </div>
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
-                Send Message
-              </Button>
-            </form>
+    <div className="bg-white">
+      {/* Professional Header with Subtle Background */}
+      <div className="bg-gradient-to-b from-primary/5 to-white border-b">
+        <div className="container mx-auto px-4 md:px-6 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6">Contact Us</h1>
+            <div className="w-20 h-1.5 bg-primary mb-8"></div>
+            <p className="text-xl text-muted-foreground max-w-2xl">
+              We welcome you to contact us for more information about any of our products or services.
+            </p>
           </div>
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold mb-4 text-sirius-gray dark:text-sirius-gray-light">
-              Our Contact Information
-            </h3>
-            <div className="flex items-start gap-4">
-              <div className="bg-secondary/10 p-3 rounded-full">
-                <MapPin className="h-6 w-6 text-secondary" />
+        </div>
+      </div>
+
+      {/* Question Section with Enhanced Design */}
+      <div className="py-16 bg-white">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center justify-center mb-6">
+              <div className="h-px bg-primary/30 w-16"></div>
+              <div className="px-4">
+                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto">
+                  <Globe className="h-6 w-6 text-primary" />
+                </div>
               </div>
-              <div>
-                <h4 className="font-semibold">Office Address</h4>
-                <p className="text-muted-foreground">
-                  123 Payroll Plaza, Suite 500
-                  <br />
-                  Business City, ST 98765
-                </p>
+              <div className="h-px bg-primary/30 w-16"></div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">Do you have a question for us?</h2>
+            <p className="text-lg text-muted-foreground mb-4">We would be happy to hear from you.</p>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Contact us if you need an app/solution customised to fit your business requirements.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Information with Enhanced Cards */}
+      <div className="py-16 bg-gradient-to-b from-white to-primary/5">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* UK Office */}
+            <div className="bg-white p-8 rounded-lg border border-primary/20 shadow-md hover:shadow-lg transition-shadow">
+              <div className="flex flex-col items-start">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 shadow-md">
+                  <MapPin className="h-7 w-7 text-primary-foreground" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-6">UNITED KINGDOM</h3>
+
+                <div className="flex items-center gap-3 mb-4 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-5 w-5 text-primary" />
+                  </div>
+                  <a href="tel:+4401296328689" className="text-primary font-medium hover:underline transition-colors">
+                    +4401296328689
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3 mb-6 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <a
+                    href="mailto:sales@dogmagroup.co.uk"
+                    className="text-primary hover:underline transition-colors break-all"
+                  >
+                    sales@dogmagroup.co.uk
+                  </a>
+                </div>
+
+                <div className="flex items-start gap-3 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="text-muted-foreground">
+                    <p className="mb-1">483 Green Lanes,</p>
+                    <p className="mb-1">London,</p>
+                    <p>N13 4BS</p>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-secondary/10 p-3 rounded-full">
-                <Phone className="h-6 w-6 text-secondary" />
-              </div>
-              <div>
-                <h4 className="font-semibold">Phone Support</h4>
-                <p className="text-muted-foreground">(555) 123-4567 (Mon-Fri, 9am-5pm)</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-secondary/10 p-3 rounded-full">
-                <Mail className="h-6 w-6 text-secondary" />
-              </div>
-              <div>
-                <h4 className="font-semibold">Email Support</h4>
-                <p className="text-muted-foreground">support@siriuspayroll365.com</p>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="bg-secondary/10 p-3 rounded-full">
-                <Building className="h-6 w-6 text-secondary" />
-              </div>
-              <div>
-                <h4 className="font-semibold">Corporate Headquarters</h4>
-                <p className="text-muted-foreground">
-                  Sirius Solutions Inc.
-                  <br />
-                  45 Innovation Drive, Tech Park, CA 12345
-                </p>
+
+            {/* Nepal Office */}
+            <div className="bg-white p-8 rounded-lg border border-primary/20 shadow-md hover:shadow-lg transition-shadow">
+              <div className="flex flex-col items-start">
+                <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 shadow-md">
+                  <MapPin className="h-7 w-7 text-primary-foreground" />
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-6">NEPAL</h3>
+
+                <div className="flex items-center gap-3 mb-4 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Phone className="h-5 w-5 text-primary" />
+                  </div>
+                  <a href="tel:+97701-4030768" className="text-primary font-medium hover:underline transition-colors">
+                    +977-01-4030768
+                  </a>
+                </div>
+
+                <div className="flex items-center gap-3 mb-6 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <a
+                    href="mailto:sales@dogmagroup.co.uk"
+                    className="text-primary hover:underline transition-colors break-all"
+                  >
+                    sales@dogmagroup.co.uk
+                  </a>
+                </div>
+
+                <div className="flex items-start gap-3 w-full">
+                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center mt-1 flex-shrink-0">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="text-muted-foreground">
+                    <p className="mb-1">NE79, Khola Pravesh Marg,</p>
+                    <p>Bafal, Kathmandu</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   )
 }
