@@ -2,7 +2,7 @@ import {
   LayoutDashboard,
   Users,
   FileText,
-  LifeBuoy,
+  FileQuestion,
   Phone,
   type LucideIcon,
   Building,
@@ -306,7 +306,7 @@ export const sidebarNavItems: NavItem[] = [
   {
     title: "FAQs",
     href: "/help-support",
-    icon: LifeBuoy,
+    icon: FileQuestion,
     keywords: ["documentation", "faq", "assistance", "guidance"],
   },
   {
