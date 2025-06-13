@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Scale, Info } from "lucide-react"
+import { UserCircle, Info } from "lucide-react"
 import { Badge } from "@/components/ui/badge"
 
 export default function PensionEnrollmentPage() {
@@ -43,7 +43,7 @@ export default function PensionEnrollmentPage() {
           <div className="relative group">
             <div className="absolute inset-0 bg-primary/30 rounded-lg blur-md transition-all duration-300 group-hover:bg-primary/40 group-hover:blur-lg" />
             <div className="relative w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-lg flex items-center justify-center shadow-lg transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-primary/25">
-              <Scale className="h-6 w-6 text-primary-foreground drop-shadow-sm group-hover:rotate-12 transition-transform duration-300" />
+              <UserCircle className="h-6 w-6 text-primary-foreground drop-shadow-sm group-hover:rotate-12 transition-transform duration-300" />
             </div>
           </div>
           <div>
@@ -118,7 +118,7 @@ export default function PensionEnrollmentPage() {
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Scale className="h-5 w-5 text-primary" />
+                <UserCircle className="h-5 w-5 text-primary" />
               </div>
               Key Functions
             </CardTitle>
@@ -157,7 +157,7 @@ export default function PensionEnrollmentPage() {
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Scale className="h-5 w-5 text-primary" />
+                <UserCircle className="h-5 w-5 text-primary" />
               </div>
               Enrollment Configuration
             </CardTitle>
@@ -191,7 +191,7 @@ export default function PensionEnrollmentPage() {
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
-                <Scale className="h-5 w-5 text-primary" />
+                <UserCircle className="h-5 w-5 text-primary" />
               </div>
               Postponement and Re-assessment
             </CardTitle>

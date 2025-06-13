@@ -304,7 +304,7 @@ export const sidebarNavItems: NavItem[] = [
     keywords: ["p45", "p60", "payslips general", "payroll summary general"],
   },
   {
-    title: "Help & Support",
+    title: "FAQs",
     href: "/help-support",
     icon: LifeBuoy,
     keywords: ["documentation", "faq", "assistance", "guidance"],
