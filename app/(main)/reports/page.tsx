@@ -98,20 +98,18 @@ export default function ReportsPage() {
         {reportTypes.map((report) => (
           <Card
             key={report.title}
-            className="hover:shadow-lg transition-all duration-300 hover:scale-105 cursor-pointer group border-border/50 shadow-sm"
+            className="border-border/50 shadow-sm"
           >
             <CardContent className="p-6">
               <div className={`w-12 h-12 rounded-lg ${report.bgColor} flex items-center justify-center mb-4`}>
                 <report.icon className={`h-6 w-6 ${report.iconColor}`} />
               </div>
-              <h3 className="font-semibold text-lg mb-2 group-hover:text-primary transition-colors">{report.title}</h3>
+              <h3 className="font-semibold text-lg mb-2">{report.title}</h3>
               <p className="text-sm text-muted-foreground">{report.description}</p>
             </CardContent>
           </Card>
         ))}
       </div>
-
-     
 
       {/* Report Information */}
       <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300 bg-gradient-to-r from-primary/5 to-transparent">

@@ -248,23 +248,25 @@ export default function TimesheetSetupPage() {
           <CardContent className="p-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Link href="/timesheet-setup/flexible-rate-setup" className="group">
-                <Card className="bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200 shadow-sm cursor-pointer">
+                <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200 group-hover:from-blue-100 group-hover:to-blue-200/50 cursor-pointer relative">
+                  <div className="absolute right-2 top-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Select →
+                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                         <FileSpreadsheet className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-semibold text-lg text-blue-700 group-hover:text-blue-800 transition-colors">
-                            Flexible Rate Timesheet
-                          </h4>
-                          <Badge className="bg-blue-600 text-white group-hover:bg-blue-700">Configure →</Badge>
-                        </div>
+                        <h4 className="font-semibold text-lg group-hover:text-blue-600 transition-colors">
+                          Flexible Rate Timesheet
+                        </h4>
                         <p className="text-sm text-muted-foreground mb-2">
                           For employees with dynamic pay rates in each pay run
                         </p>
-                        <p className="text-xs text-muted-foreground">Import timesheets using defined Excel format</p>
+                        <p className="text-xs text-muted-foreground opacity-75">
+                          Import timesheets using defined Excel format
+                        </p>
                       </div>
                     </div>
                   </CardContent>
@@ -272,19 +274,19 @@ export default function TimesheetSetupPage() {
               </Link>
 
               <Link href="/timesheet-setup/fixed-rate-setup" className="group">
-                <Card className="bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200 shadow-sm cursor-pointer">
+                <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200 group-hover:from-purple-100 group-hover:to-purple-200/50 cursor-pointer relative">
+                  <div className="absolute right-2 top-2 bg-purple-600 text-white text-xs px-2 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    Select →
+                  </div>
                   <CardContent className="p-6">
                     <div className="flex items-start gap-4">
-                      <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center">
+                      <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
                         <DollarSign className="h-5 w-5 text-white" />
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-semibold text-lg text-purple-700 group-hover:text-purple-800 transition-colors">
-                            Fixed Rate Timesheet
-                          </h4>
-                          <Badge className="bg-purple-600 text-white group-hover:bg-purple-700">Configure →</Badge>
-                        </div>
+                        <h4 className="font-semibold text-lg group-hover:text-purple-600 transition-colors">
+                          Fixed Rate Timesheet
+                        </h4>
                         <p className="text-sm text-muted-foreground mb-2">
                           For employees with fixed rates in each pay run
                         </p>

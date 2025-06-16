@@ -95,7 +95,7 @@ export default function GeneralHmrcSetupPage() {
         </Card>
 
         {/* Prerequisites Card */}
-        <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+        <Card className="mb-6 border-border/50 shadow-sm">
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
@@ -107,7 +107,7 @@ export default function GeneralHmrcSetupPage() {
           </CardHeader>
           <CardContent className="p-6 space-y-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200">
+              <Card className="border-border/50 shadow-sm bg-gradient-to-br from-blue-50 to-blue-100/50 border-blue-200">
                 <CardContent className="p-6">
                   <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center mb-4">
                     <Key className="h-5 w-5 text-white" />
@@ -119,7 +119,7 @@ export default function GeneralHmrcSetupPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200">
+              <Card className="border-border/50 shadow-sm bg-gradient-to-br from-orange-50 to-orange-100/50 border-orange-200">
                 <CardContent className="p-6">
                   <div className="w-10 h-10 rounded-lg bg-orange-500 flex items-center justify-center mb-4">
                     <Building2 className="h-5 w-5 text-white" />
@@ -129,7 +129,7 @@ export default function GeneralHmrcSetupPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200">
+              <Card className="border-border/50 shadow-sm bg-gradient-to-br from-purple-50 to-purple-100/50 border-purple-200">
                 <CardContent className="p-6">
                   <div className="w-10 h-10 rounded-lg bg-purple-600 flex items-center justify-center mb-4">
                     <AlertCircle className="h-5 w-5 text-white" />
@@ -139,7 +139,7 @@ export default function GeneralHmrcSetupPage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02] bg-gradient-to-br from-green-50 to-green-100/50 border-green-200">
+              <Card className="border-border/50 shadow-sm bg-gradient-to-br from-green-50 to-green-100/50 border-green-200">
                 <CardContent className="p-6">
                   <div className="w-10 h-10 rounded-lg bg-green-600 flex items-center justify-center mb-4">
                     <ArrowRight className="h-5 w-5 text-white" />
