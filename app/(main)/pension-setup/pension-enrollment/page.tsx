@@ -105,7 +105,7 @@ export default function PensionenrolmentPage() {
 
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               <img
-                src="/PensionenrolmentSetup1.png"
+                src="/PensionEnrolmentSetup1.png"
                 alt="Step by Step guide to Pension enrolment Setup"
                 className="w-full object-contain"
               />
@@ -239,7 +239,7 @@ export default function PensionenrolmentPage() {
 
             <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
               <img
-                src="/PensionenrolmentSetup2.png"
+                src="/PensionEnrolmentSetup2.png"
                 alt="Available Pension enrolment Criteria"
                 className="w-full object-contain"
               />
