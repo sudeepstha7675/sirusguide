@@ -76,30 +76,12 @@ export default function IntroductionPage() {
               </div>
             </div>
 
-            {/* Images with proper aspect ratio control */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 shadow-sm">
-                <div className="relative w-full h-0 pb-[56.25%]">
-                  <Image
-                    src="/Overview1.png"
-                    alt="Sirius Payroll 365 Features"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
-              <div className="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden border border-border hover:border-primary/30 transition-all duration-300 shadow-sm">
-                <div className="relative w-full h-0 pb-[56.25%]">
-                  <Image
-                    src="/Overview2.png"
-                    alt="Sirius Payroll 365 Dashboard"
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+           <div className="mt-6 mb-8 border rounded-lg overflow-hidden shadow-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02]">
+              <img
+                src="/Overview1.png"
+                alt="Step by Step guide to Payroll Setup"
+                className="w-full object-contain"
+              />
             </div>
 
             {/* Integration Information */}

@@ -139,7 +139,7 @@ export default function PensionSetsPage() {
               {pensionTypes.map((type, index) => (
                 <Card
                   key={index}
-                  className={`border-l-4 border-l-${type.color.split("-")[1]}-600 transition-all duration-300 hover:shadow-lg hover:scale-[1.02] ${type.color} text-white`}
+                  className={`border-l-4 border-l-${type.color.split("-")[1]}-600 ${type.color} text-white`} // Removed transition and hover effects
                 >
                   <CardContent className="p-6">
                     <div className="space-y-4">

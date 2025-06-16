@@ -153,7 +153,7 @@ export default function PensionenrolmentPage() {
         </Card>
 
         {/* enrolment Configuration Card */}
-        <Card className="mb-6 border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+        <Card className="mb-6 border-border/50 shadow-sm">
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
@@ -168,7 +168,7 @@ export default function PensionenrolmentPage() {
               {configurationCriteria.map((criteria, index) => (
                 <Card
                   key={index}
-                  className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+                  className="border-border/50 shadow-sm"
                 >
                   <CardContent className="p-6">
                     <div className="space-y-4">
@@ -187,7 +187,7 @@ export default function PensionenrolmentPage() {
         </Card>
 
         {/* Postponement and Re-assessment Card */}
-        <Card className="border-border/50 shadow-sm hover:shadow-md transition-all duration-300">
+        <Card className="border-border/50 shadow-sm">
           <CardHeader className="border-b border-border/50 bg-gradient-to-r from-primary/5 to-transparent">
             <CardTitle className="flex items-center gap-3 text-xl text-primary">
               <div className="p-2 rounded-lg bg-primary/10">
@@ -204,7 +204,7 @@ export default function PensionenrolmentPage() {
               {postponementCriteria.map((criteria, index) => (
                 <Card
                   key={index}
-                  className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+                  className="border-border/50 shadow-sm"
                 >
                   <CardContent className="p-6">
                     <div className="space-y-4">
@@ -221,7 +221,7 @@ export default function PensionenrolmentPage() {
               {reassessmentCriteria.map((criteria, index) => (
                 <Card
                   key={index}
-                  className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+                  className="border-border/50 shadow-sm"
                 >
                   <CardContent className="p-6">
                     <div className="space-y-4">

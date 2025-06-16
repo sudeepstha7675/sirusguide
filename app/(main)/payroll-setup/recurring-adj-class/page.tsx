@@ -124,22 +124,20 @@ export default function RecurringAdjClassPage() {
             </p>
           </CardHeader>
           <CardContent className="p-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {adjustmentClasses.map((adjustment, index) => (
-                <Card
-                  key={index}
-                  className="border-border/50 shadow-sm transition-all duration-300 hover:shadow-md hover:scale-[1.02]"
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+              {adjustmentClasses.map((adjustment) => (
+                <div
+                  key={adjustment.name}
+                  className="p-4 rounded-lg border border-border bg-card text-card-foreground shadow-sm"
                 >
-                  <CardContent className="p-6">
-                    <div className="space-y-3">
-                      <h3 className="font-semibold text-lg">{adjustment.name}</h3>
-                      <div className="flex gap-2">
-                        <Badge variant="outline">{adjustment.type}</Badge>
-                        <Badge className={getCategoryColor(adjustment.category)}>{adjustment.category}</Badge>
-                      </div>
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-lg">{adjustment.name}</h3>
+                    <div className="flex gap-2">
+                      <Badge variant="outline">{adjustment.type}</Badge>
+                      <Badge className={getCategoryColor(adjustment.category)}>{adjustment.category}</Badge>
                     </div>
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
           </CardContent>
